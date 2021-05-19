@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Image from "gatsby-image"
-import parse from "html-react-parser"
+import parse, { domToReact } from "html-react-parser"
 
 // We're using Gutenberg so we need the block styles
 // these are copied into this project due to a conflict in the postCSS
@@ -14,6 +14,28 @@ import "../css/@wordpress/block-library/build-style/theme.css"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import PostCode from "../components/post-code"
+
+const getLanguage = node => {
+  if (node.attribs.class != null) {
+    return node.attribs.class
+  }
+  return null
+}
+
+const getCode = node => {
+  if (node.children.length > 0 && node.children[0].name === 'code') {
+    return node.children[0].children
+  } else {
+    return node.children
+  }
+}
+
+const replaceCode = node => {
+  if (node.name === 'pre' && node.children.length > 0) {
+    return <PostCode language={getLanguage(node)}>{domToReact(getCode(node))}</PostCode>
+  }
+}
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
   const featuredImage = {
@@ -46,7 +68,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         </header>
 
         {!!post.content && (
-          <section itemProp="articleBody">{parse(post.content)}</section>
+          <section itemProp="articleBody">{parse(post.content, {replace: replaceCode})}</section>
         )}
 
         <hr />
