@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-wordpress-blog",
+  "name": "mystroken-personal-website",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Personal blog running on top of Gatsby and WordPress.",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com> and Tyler Barnes <tylerdbarnes@gmail.com>",
+  "author": "Mystro Ken <mystroken@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/mystroken/mystroken.com/issues"
   },
   "dependencies": {
     "gatsby": "^3.3.0",
@@ -31,15 +31,16 @@
     "dumper.js": "^1.3.1",
     "prettier": "2.2.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/mystroken/mystroken.com#readme",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "wordpress"
   ],
   "license": "0BSD",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/mystroken/mystroken.com.git"
   },
   "scripts": {
     "build": "gatsby build",
