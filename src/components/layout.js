@@ -35,11 +35,14 @@ const Layout = ({ isHomePage, children }) => {
       <main>{children}</main>
 
       <footer>
-        © {new Date().getFullYear()}, Built with
+        © {new Date().getFullYear()} Mystro Ken, Built with
         {` `}
         <a href="https://www.gatsbyjs.com">Gatsby</a>
         {` `}
-        And <a href="https://wordpress.org/">WordPress</a>
+        And <a href="https://wordpress.org/">WordPress</a>.
+        The source code is hosted on
+        {` `}
+        <a href="https://github.com/mystroken/mystroken.com/">GitHub</a>.
       </footer>
     </div>
   )

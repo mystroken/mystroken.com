@@ -6,6 +6,11 @@
  *
  */
 
+ const cssnano = require('cssnano')
+ const mqpacker = require('css-mqpacker')
+ const autoprefixer = require('autoprefixer')
+ const combineSelectors = require('postcss-combine-duplicated-selectors')
+
 module.exports = {
   /**
    * Adding plugins to this array adds them to your Gatsby site.
@@ -70,6 +75,22 @@ module.exports = {
 
     // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
     `gatsby-plugin-react-helmet`,
+
+    {
+      /**
+       * Compile Sass
+       * See https://www.npmjs.com/package/gatsby-plugin-sass/
+       */
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        postCssPlugins: [
+          combineSelectors({removeDuplicatedProperties: true}),
+          mqpacker(), // A tool for packing same CSS media query rules into one
+          autoprefixer(),
+          cssnano()
+        ],
+      }
+      },
 
     /**
      * this (optional) plugin enables Progressive Web App + Offline functionality
