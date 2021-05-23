@@ -24,7 +24,7 @@ const getLanguage = node => {
 }
 
 const getCode = node => {
-  if (node.children.length > 0 && node.children[0].name === 'code') {
+  if (node.children.length > 0 && node.children[0].name === "code") {
     return node.children[0].children
   } else {
     return node.children
@@ -32,8 +32,12 @@ const getCode = node => {
 }
 
 const replaceCode = node => {
-  if (node.name === 'pre' && node.children.length > 0) {
-    return <PostCode language={getLanguage(node)}>{domToReact(getCode(node))}</PostCode>
+  if (node.name === "pre" && node.children.length > 0) {
+    return (
+      <PostCode language={getLanguage(node)}>
+        {domToReact(getCode(node))}
+      </PostCode>
+    )
   }
 }
 
@@ -48,14 +52,17 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
       <Seo title={post.title} description={post.excerpt} />
 
       <article
-        className="blog-post"
+        id={`post-${post.id}`}
+        className="post entry"
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header>
-          <h1 itemProp="headline">{parse(post.title)}</h1>
+        <header className="entry-header">
+          <h1 itemProp="headline" className="entry-title">
+            {parse(post.title)}
+          </h1>
 
-          <p>{post.date}</p>
+          <div className="posted-on">{post.date}</div>
 
           {/* if we have a featured image for this post let's display it */}
           {featuredImage?.fluid && (
@@ -68,12 +75,14 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         </header>
 
         {!!post.content && (
-          <section itemProp="articleBody">{parse(post.content, {replace: replaceCode})}</section>
+          <section itemProp="articleBody" className="entry-content">
+            {parse(post.content, { replace: replaceCode })}
+          </section>
         )}
 
         <hr />
 
-        <footer>
+        <footer className="entry-footer">
           <Bio />
         </footer>
       </article>

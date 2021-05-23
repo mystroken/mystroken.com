@@ -8,4 +8,4 @@
 // custom CSS styles
 // import "./src/css/style.css"
 
-import "./src/sass/style.scss"
+import "./src/sass/style.sass"
