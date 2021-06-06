@@ -1,0 +1,16 @@
+{
+  "name": "gatsby-shiki-highlight-wordpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mystro Ken <mystroken@gmail.com> (https://mystroken.com)",
+  "license": "ISC",
+  "dependencies": {
+    "html-escaper": "^3.0.3",
+    "htmldom": "^4.0.11",
+    "shiki": "^0.9.3"
+  }
+}

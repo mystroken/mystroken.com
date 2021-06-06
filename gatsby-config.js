@@ -33,7 +33,8 @@ module.exports = {
         // the only required plugin option for WordPress is the GraphQL url.
         url:
           process.env.WPGRAPHQL_URL ||
-          `https://wpgatsbydemo.wpengine.com/graphql`,
+          `https://wp.mystroken.com/graphql`,
+          // `https://wpgatsbydemo.wpengine.com/graphql`,
       },
     },
 
@@ -90,7 +91,24 @@ module.exports = {
           cssnano()
         ],
       }
-      },
+    },
+
+    // Add Shiki for code highlighting.
+    `gatsby-shiki-highlight-wordpress`,
+
+    // {
+    //   resolve: `gatsby-transformer-remark`,
+    //   options: {
+    //     plugins: [
+    //       {
+    //         resolve: `gatsby-remark-shiki`,
+    //         options: {
+    //           noInlineHighlight: true
+    //         }
+    //       }
+    //     ]
+    //   },
+    // },
 
     /**
      * this (optional) plugin enables Progressive Web App + Offline functionality

@@ -20,7 +20,12 @@ const Layout = ({ children }) => {
 
   return (
     <Fragment>
-      <header className="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+      <header
+        className="header"
+        role="banner"
+        itemScope
+        itemType="http://schema.org/WPHeader"
+      >
         <nav className="menu">
           <div className="menu-logo">
             <Link aria-label="Mystro Ken" to="/">
@@ -81,7 +86,7 @@ const Layout = ({ children }) => {
         </nav>
       </header>
 
-      <main className="main" role="main" itemscope itemprop="mainContentOfPage">
+      <main className="main" role="main" itemScope itemProp="mainContentOfPage">
         {children}
       </main>
 
@@ -89,12 +94,12 @@ const Layout = ({ children }) => {
         id="footer"
         className="footer"
         role="contentinfo"
-        itemscope
-        itemtype="http://schema.org/WPFooter"
+        itemScope
+        itemType="http://schema.org/WPFooter"
       >
         <div className="footer__inner">
-          {/* <span itemprop="copyrightYear">2017</span>  */}
-          © {new Date().getFullYear()} Mystro Ken, Built with
+          ©{" "}
+          <span itemProp="copyrightYear">{new Date().getFullYear()}</span> Mystro Ken, Built with
           {` `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
           {` `}

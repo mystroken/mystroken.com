@@ -8,8 +8,8 @@ import parse, { domToReact } from "html-react-parser"
 // version used by the Gatsby and @wordpress packages that causes build
 // failures.
 // @todo update this once @wordpress upgrades their postcss version
-import "../css/@wordpress/block-library/build-style/style.css"
-import "../css/@wordpress/block-library/build-style/theme.css"
+// import "../css/@wordpress/block-library/build-style/style.css"
+// import "../css/@wordpress/block-library/build-style/theme.css"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -33,11 +33,7 @@ const getCode = node => {
 
 const replaceCode = node => {
   if (node.name === "pre" && node.children.length > 0) {
-    return (
-      <PostCode language={getLanguage(node)}>
-        {domToReact(getCode(node))}
-      </PostCode>
-    )
+    return <PostCode language={getLanguage(node)}>{domToReact(getCode(node))}</PostCode>
   }
 }
 
@@ -74,13 +70,13 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
           )}
         </header>
 
-        {!!post.content && (
-          <section itemProp="articleBody" className="entry-content">
-            {parse(post.content, { replace: replaceCode })}
+        {!!post.highlightedContent && (
+          <section className="entry-content" itemProp="articleBody">
+            {/* {parse(post.content, { replace: replaceCode })} */}
+            {parse(post.highlightedContent)}
+            <hr />
           </section>
         )}
-
-        <hr />
 
         <footer className="entry-footer">
           <Bio />
@@ -131,7 +127,8 @@ export const pageQuery = graphql`
     post: wpPost(id: { eq: $id }) {
       id
       excerpt
-      content
+      # content
+      highlightedContent
       title
       date(formatString: "MMMM DD, YYYY")
 
