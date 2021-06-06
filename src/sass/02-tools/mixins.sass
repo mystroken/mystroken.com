@@ -1,0 +1,12 @@
+@use "sass:math"
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $bpoints: $breakpoints)
+    $max: map-get($bpoints, $name) + 1
+    @media (min-width: $max)
+        @content
+
+@mixin vertical-margin($font-size, $line-height)
+    line-height: $line-height
+    margin-top: round(math.div(5 * $line-height, $font-size)) * 1rem

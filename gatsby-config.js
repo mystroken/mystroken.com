@@ -35,6 +35,13 @@ module.exports = {
           process.env.WPGRAPHQL_URL ||
           `https://wp.mystroken.com/graphql`,
           // `https://wpgatsbydemo.wpengine.com/graphql`,
+
+          // This type will contain remote schema Query type
+        // typeName: `WPGraphQL`,
+        // This is field under which it's accessible
+        // fieldName: `wpgraphql`,
+        // Url to query from
+        // url: `https://demo.wpgraphql.com/graphql`,
       },
     },
 
