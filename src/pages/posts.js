@@ -6,11 +6,8 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const PostsPage = ({
-  data,
-  pageContext: { nextPagePath, previousPagePath },
-}) => {
-  const posts = data.allWpPost.nodes
+const PostsPage = ({ data }) => {
+  const posts = data.allWpPost.edges
 
   if (!posts.length) {
     return (
@@ -30,7 +27,7 @@ const PostsPage = ({
       <Seo title="Software developer & designer" />
       <Bio />
       <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
+        {posts.map(({post}) => {
           const title = post.title
 
           return (
@@ -54,32 +51,21 @@ const PostsPage = ({
           )
         })}
       </ol>
-
-      {previousPagePath && (
-        <>
-          <Link to={previousPagePath}>Previous page</Link>
-          <br />
-        </>
-      )}
-      {nextPagePath && <Link to={nextPagePath}>Next page</Link>}
     </Layout>
   )
 }
 export default PostsPage
 
 export const pageQuery = graphql`
-  query WPPostArchive($offset: Int!, $postsPerPage: Int!) {
-    allWpPost(
-      sort: { fields: [date], order: DESC }
-      limit: $postsPerPage
-      skip: $offset
-    ) {
-      nodes {
-        excerpt
-        uri
-        date(formatString: "MMMM DD, YYYY")
-        title
-        excerpt
+   query WpPosts {
+    allWpPost {
+      edges {
+        post: node {
+          title
+          excerpt
+          slug
+          date(formatString: "MMMM DD, YYYY")
+        }
       }
     }
   }
