@@ -30,6 +30,7 @@ exports.createResolvers = ({ createResolvers }) => {
       highlightedContent: {
         type: "String",
         async resolve({ content }) {
+          if (typeof content !== 'string') return ''
           const $ = cheerio.load(content, null, false)
           const highlighter = await shiki.getHighlighter({ theme: "nord" })
           $('code').each((index, codeElement) => {
