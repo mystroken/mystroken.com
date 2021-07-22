@@ -31,7 +31,10 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header className="entry-header">
+        <header 
+          data-scroll-section
+          className="entry-header"
+        >
           <h1 itemProp="headline" className="entry-title">
             {parse(post.title)}
           </h1>
@@ -49,18 +52,18 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         </header>
 
         {!!post.highlightedContent && (
-          <section className="entry-content" itemProp="articleBody">
+          <section data-scroll-section className="entry-content" itemProp="articleBody">
             {parse(post.highlightedContent)}
             <hr />
           </section>
         )}
 
-        <footer className="entry-footer">
+        <footer data-scroll-section className="entry-footer">
           <Bio />
         </footer>
       </article>
 
-      <nav className="blog-post-nav">
+      <nav data-scroll-section className="blog-post-nav">
         <ul
           style={{
             display: `flex`,

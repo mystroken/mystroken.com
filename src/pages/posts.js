@@ -25,8 +25,8 @@ const PostsPage = ({ data }) => {
   return (
     <Layout>
       <Seo title="Software developer & designer" />
-      <Bio />
-      <ol style={{ listStyle: `none` }}>
+      <Bio data-scroll-section />
+      <ol data-scroll-section style={{ listStyle: `none` }}>
         {posts.map(({post}) => {
           const title = post.title
 

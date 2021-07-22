@@ -29,9 +29,9 @@ const BlogIndex = ({
     <Layout isHomePage>
       <Seo title="Software developer & designer" />
 
-      <Bio />
+      <Bio data-scroll-section />
 
-      <ol style={{ listStyle: `none` }}>
+      <ol data-scroll-section style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.title
 
@@ -59,11 +59,11 @@ const BlogIndex = ({
 
       {previousPagePath && (
         <>
-          <Link to={previousPagePath}>Previous page</Link>
+          <Link data-scroll-section to={previousPagePath}>Previous page</Link>
           <br />
         </>
       )}
-      {nextPagePath && <Link to={nextPagePath}>Next page</Link>}
+      {nextPagePath && <Link data-scroll-section to={nextPagePath}>Next page</Link>}
     </Layout>
   )
 }

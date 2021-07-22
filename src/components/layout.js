@@ -1,4 +1,5 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useRef, useEffect } from "react"
+import LocomotiveScroll from 'locomotive-scroll'
 import Header from "./header"
 
 const Layout = ({ children }) => {
@@ -16,16 +17,34 @@ const Layout = ({ children }) => {
   //     }
   //   }
   // `)
+  
+  const scrollContainerEl = useRef(null)
+  useEffect(() => {
+    const scroll = new LocomotiveScroll({
+      el: document.querySelector('#gatsby-focus-wrapper'),
+      smooth: true
+    })
+    return () => {
+      scroll.destroy()
+    }
+  }, [])
 
   return (
     <Fragment>
       <Header />
 
-      <main className="main" role="main" itemScope itemProp="mainContentOfPage">
+      <main
+        ref={scrollContainerEl} 
+        className="main" 
+        role="main" 
+        itemScope 
+        itemProp="mainContentOfPage"
+      >
         {children}
       </main>
 
       <footer
+        data-scroll-section
         id="footer"
         className="footer"
         role="contentinfo"

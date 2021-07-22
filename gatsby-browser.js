@@ -9,4 +9,5 @@
 // import "./src/css/style.css"
 // import "./src/atom-one-dark.css"
 import "@wordpress/block-library/build-style/style.css"
+import "./src/css/locomotive-scroll.css"
 import "./src/sass/style.sass"
