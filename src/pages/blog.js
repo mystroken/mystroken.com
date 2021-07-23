@@ -6,7 +6,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const PostsPage = ({ data }) => {
+const BlogPage = ({ data }) => {
   const posts = data.allWpPost.edges
 
   if (!posts.length) {
@@ -54,16 +54,17 @@ const PostsPage = ({ data }) => {
     </Layout>
   )
 }
-export default PostsPage
+export default BlogPage
 
 export const pageQuery = graphql`
-   query WpPosts {
+   query BlogQuery {
     allWpPost {
       edges {
         post: node {
           title
           excerpt
           slug
+          uri
           date(formatString: "MMMM DD, YYYY")
         }
       }

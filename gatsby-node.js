@@ -24,7 +24,7 @@ exports.createPages = async gatsbyUtilities => {
   await createIndividualBlogPostPages({ posts, gatsbyUtilities })
 
   // And a paginated archive
-  await createBlogPostArchive({ posts, gatsbyUtilities })
+  // await createBlogPostArchive({ posts, gatsbyUtilities })
 }
 
 /**
@@ -38,7 +38,7 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
       gatsbyUtilities.actions.createPage({
         // Use the WordPress uri as the Gatsby page path
         // This is a good idea so that internal links and menus work 👍
-        path: `/posts${post.uri}`,
+        path: post.uri,
 
         // use the blog post template as the page component
         component: path.resolve(`./src/templates/blog-post.js`),
