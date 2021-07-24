@@ -10,7 +10,13 @@ const Layout = ({ children }) => {
         el: document.querySelector("#gatsby-focus-wrapper"),
         smooth: true,
       })
+      scroll.on("scroll", args => {
+        console.log(args)
+      })
     })
+
+    // NavBar interaction
+    // End of NavBar interaction
 
     return () => {
       scroll && scroll.destroy()

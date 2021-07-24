@@ -1,11 +1,18 @@
+code,
+:not(pre) > code
+  padding: .2em .4em
+  word-break: break-word
+  background: rgba(255,229,100,0.2)
+  color: #1a1a1a
+
 pre
   @extend %overflow-container !optional
   padding-left: 0
   padding-right: 0
   overflow: auto
 
-code
-  padding: 0 1rem
-  min-width: 100%
-  @include media-breakpoint-up("sm")
-    padding: 0 2rem
+  code
+    padding: 0 1rem
+    min-width: 100%
+    @include media-breakpoint-up("sm")
+      padding: 0 2rem
