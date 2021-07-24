@@ -15,13 +15,17 @@ export default function PostList({ posts, ...props }) {
             itemScope
             itemType="http://schema.org/Article"
           >
-            <time itemProp="datePublished">{post.date}</time>
-            <h3>
+            <time className="post-date" itemProp="datePublished">
+              {post.date}
+            </time>
+            <h3 className="post-title">
               <Link to={post.uri} itemProp="url">
                 <span itemProp="headline">{parse(title)}</span>
               </Link>
             </h3>
-            <section itemProp="description">{parse(post.excerpt)}</section>
+            <div className="post-description" itemProp="description">
+              {parse(post.excerpt)}
+            </div>
           </article>
         )
       })}
