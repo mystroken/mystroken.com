@@ -1,16 +1,11 @@
 pre
-    padding: 1.5rem 0
-    // margin-left: calc(50% - 50vw)
-    // margin-right: calc(50% - 50vw)
-    // margin-left: -2.5vw
-    // margin-right: -2.5vw
-    overflow: auto
-    @include media-breakpoint-up("sm")
-        // margin-left: -1.5rem
-        // margin-right: -1.5rem
+  @extend %overflow-container !optional
+  padding-left: 0
+  padding-right: 0
+  overflow: auto
 
 code
-    padding: 0 1rem
-    min-width: 100%
-    @include media-breakpoint-up("sm")
-        padding: 0 1.5rem
+  padding: 0 1rem
+  min-width: 100%
+  @include media-breakpoint-up("sm")
+    padding: 0 2rem

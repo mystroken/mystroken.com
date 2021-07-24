@@ -10,6 +10,9 @@
  * - Set vertical padding and horizontal margins
  */
 
+// Margins
+// To calculate the margins, divide the default line-height by the heading’s font size
+
 h1,
 h2,
 h3,
@@ -18,37 +21,35 @@ h5,
 h6
     margin-bottom: 1rem
 
-// Margins
-// To calculate the margins, divide the default line-height by the heading’s font size 
-p
-    margin-top: $line-height-body * .75rem
-    margin-bottom: $line-height-body * .75rem
-
 h1
-    font-size: $heading--font-size-h1 * 1rem
-    @include vertical-margin($heading--font-size-h1, $heading--line-height-h1)
-
+  font-size: $heading--font-size-h1 * 1rem
+  @include vertical-margin($heading--font-size-h1, $heading--line-height-h1)
 
 h2
-    font-size: $heading--font-size-h2 * 1rem
-    @include vertical-margin($heading--font-size-h2, $heading--line-height-h2)
+  font-size: $heading--font-size-h2 * 1rem
+  @include vertical-margin($heading--font-size-h2, $heading--line-height-h2)
 
 h3
-    font-size: $heading--font-size-h3 * 1rem
-    @include vertical-margin($heading--font-size-h3, $heading--line-height-h3)
+  font-size: $heading--font-size-h3 * 1rem
+  @include vertical-margin($heading--font-size-h3, $heading--line-height-h3)
 
 h4
-    font-size: $heading--font-size-h4 * 1rem
-    @include vertical-margin($heading--font-size-h4, $heading--line-height-h4)
+  font-size: $heading--font-size-h4 * 1rem
+  @include vertical-margin($heading--font-size-h4, $heading--line-height-h4)
 
 h5
-    font-size: $heading--font-size-h5 * 1rem
-    @include vertical-margin($heading--font-size-h5, $heading--line-height-h5)
+  font-size: $heading--font-size-h5 * 1rem
+  @include vertical-margin($heading--font-size-h5, $heading--line-height-h5)
 
 h6
-    font-size: $heading--font-size-h6 * 1rem
-    @include vertical-margin($heading--font-size-h6, $heading--line-height-h6)
+  font-size: $heading--font-size-h6 * 1rem
+  @include vertical-margin($heading--font-size-h6, $heading--line-height-h6)
+
+p,
+blockquote
+  margin-top: $line-height-body * .6rem !important
+  margin-bottom: $line-height-body * .75rem !important
 
 .page-title
-    font-size: $heading--font-size-title * 1rem
-    @include vertical-margin($heading--font-size-title, $heading--line-height-title)
+  font-size: $heading--font-size-title * 1rem
+  @include vertical-margin($heading--font-size-title, $heading--line-height-title)
