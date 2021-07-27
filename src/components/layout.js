@@ -3,20 +3,39 @@ import { Link } from "gatsby"
 
 const Layout = ({ children }) => {
   const scrollContainerEl = useRef(null)
+
   useEffect(() => {
     let scroll = null
+    let lastYScrollPosition = 0
     import("locomotive-scroll").then(({ default: LocomotiveScroll }) => {
       scroll = new LocomotiveScroll({
         el: document.querySelector("#gatsby-focus-wrapper"),
         smooth: true,
       })
+      const nav = document.querySelector('.nav')
+      // const defaultBg = nav.style.background
       scroll.on("scroll", args => {
-        console.log(args)
+        if (args.scroll.y < 100) {
+          nav.classList.remove('dark')
+          nav.classList.remove('pull-up')
+        }
+        // If we scroll down
+        else if (args.scroll.y > lastYScrollPosition) {
+          nav.classList.add('pull-up')
+        }
+        // Else, if we scroll up
+        else if (args.scroll.y < lastYScrollPosition) {
+          nav.classList.add('dark')
+          nav.classList.remove('pull-up')
+        }
+        lastYScrollPosition = args.scroll.y
+        // if (args.scroll.y > 100) {
+        //   nav.style.background = 'red'
+        // } else {
+        //   nav.style.background = defaultBg
+        // }
       })
     })
-
-    // NavBar interaction
-    // End of NavBar interaction
 
     return () => {
       scroll && scroll.destroy()

@@ -8,6 +8,13 @@
     @include media-breakpoint-up("lg")
         width: 33rem
 
+// .container-fluid
+//     padding-left: calc(max(22px, env(safe-area-inset-left)))
+//     padding-right: calc(max(22px, env(safe-area-inset-right)))
+
 .container-fluid
-    padding-left: calc(max(22px, env(safe-area-inset-left)))
-    padding-right: calc(max(22px, env(safe-area-inset-right)))
+    @extend .container
+    @include media-breakpoint-up("sm")
+      padding-left: 4vw
+      padding-right: 4vw
+      width: 100% !important

@@ -4,8 +4,16 @@
   left: 0
   right: 0
   z-index: 2
-  background: rgba(#000, .92)
-  color: white
+  padding-top: 3.5714285714rem
+  padding-bottom: 3.5714285714rem
+  transition: .4s
+  &.dark
+    padding-top: .618rem
+    padding-bottom: .618rem
+    background: rgba(#000, .92)
+    color: white
+  &.pull-up
+    transform: translate3d(0,-100%,0)
 
 .nav-content
   @extend .container-fluid
