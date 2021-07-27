@@ -13,27 +13,30 @@ const Layout = ({ children }) => {
         smooth: true,
       })
       const nav = document.querySelector('.nav')
-      // const defaultBg = nav.style.background
+      const clear = () => {
+        nav.classList.remove('dark')
+        nav.classList.remove('pull-up')
+      }
+      const pullUp = () => {
+        nav.classList.add('pull-up')
+      }
+      const showShrinkedNav = () => {
+        nav.classList.add('dark')
+        nav.classList.remove('pull-up')
+      }
       scroll.on("scroll", args => {
-        if (args.scroll.y < 100) {
-          nav.classList.remove('dark')
-          nav.classList.remove('pull-up')
-        }
+        // Clearing when
+        // we're on the top
+        if (args.scroll.y < 100)
+          window.requestAnimationFrame(clear)
         // If we scroll down
-        else if (args.scroll.y > lastYScrollPosition) {
-          nav.classList.add('pull-up')
-        }
+        else if (args.scroll.y > lastYScrollPosition)
+          window.requestAnimationFrame(pullUp)
         // Else, if we scroll up
-        else if (args.scroll.y < lastYScrollPosition) {
-          nav.classList.add('dark')
-          nav.classList.remove('pull-up')
-        }
+        else if (args.scroll.y < (lastYScrollPosition + 30))
+          window.requestAnimationFrame(showShrinkedNav)
+
         lastYScrollPosition = args.scroll.y
-        // if (args.scroll.y > 100) {
-        //   nav.style.background = 'red'
-        // } else {
-        //   nav.style.background = defaultBg
-        // }
       })
     })
 
