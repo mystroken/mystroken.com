@@ -104,20 +104,6 @@ module.exports = {
     // Add Shiki for code highlighting.
     `gatsby-shiki-highlight-wordpress`,
 
-    // {
-    //   resolve: `gatsby-transformer-remark`,
-    //   options: {
-    //     plugins: [
-    //       {
-    //         resolve: `gatsby-remark-shiki`,
-    //         options: {
-    //           noInlineHighlight: true
-    //         }
-    //       }
-    //     ]
-    //   },
-    // },
-
     /**
      * this (optional) plugin enables Progressive Web App + Offline functionality
      * To learn more, visit: https://gatsby.dev/offline
