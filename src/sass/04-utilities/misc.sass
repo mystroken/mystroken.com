@@ -1,20 +1,27 @@
+%container-base
+  width: 100%
+  margin: 0 auto
+
 .container
-    margin: 0 auto
-    width: 90vw
-    @include media-breakpoint-up("sm")
-        width: 80vw
+  @extend %container-base
+  padding-left: 5vw
+  padding-right: 5vw
+  @include media-breakpoint-up("sm")
+    padding-left: 10vw
+    padding-right: 10vw
     @include media-breakpoint-up("md")
-        width: 70vw
+      padding-left: 15vw
+      padding-right: 15vw
     @include media-breakpoint-up("lg")
-        width: 33rem
+      padding-left: 33.5vw
+      padding-right: 33.5vw
 
 // .container-fluid
 //     padding-left: calc(max(22px, env(safe-area-inset-left)))
 //     padding-right: calc(max(22px, env(safe-area-inset-right)))
 
 .container-fluid
-    @extend .container
-    @include media-breakpoint-up("sm")
-      padding-left: 4vw
-      padding-right: 4vw
-      width: 100% !important
+  @extend %container-base
+  @include media-breakpoint-up("sm")
+    padding-left: 4vw
+    padding-right: 4vw

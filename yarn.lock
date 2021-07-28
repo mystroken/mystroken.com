@@ -13867,15 +13867,6 @@ shiki@^0.2.2:
     shiki-themes "^0.2.7"
     vscode-textmate "^5.2.0"
 
-shiki@^0.9.3:
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/shiki/-/shiki-0.9.5.tgz#c8da81a05fbfd1810729c6873901a729a72ec541"
-  integrity sha512-XFn+rl3wIowDjzdr5DlHoHgQphXefgUTs2bNp/bZu4WF9gTrTLnKwio3f28VjiFG6Jpip7yQn/p4mMj6OrjrtQ==
-  dependencies:
-    json5 "^2.2.0"
-    onigasm "^2.2.5"
-    vscode-textmate "5.2.0"
-
 showdown@^1.9.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/showdown/-/showdown-1.9.1.tgz#134e148e75cd4623e09c21b0511977d79b5ad0ef"
@@ -15685,11 +15676,6 @@ virtual-scroll@^1.5.2:
     lethargy "^1.0.2"
     object-assign "^4.0.1"
     tiny-emitter "^1.0.0"
-
-vscode-textmate@5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/vscode-textmate/-/vscode-textmate-5.2.0.tgz#01f01760a391e8222fe4f33fbccbd1ad71aed74e"
-  integrity sha512-Uw5ooOQxRASHgu6C7GVvUxisKXfSgW4oFlO+aa+PAkgmH89O3CXxEEzNRNtHSqtXFTl0nAC1uYj0GMSH27uwtQ==
 
 vscode-textmate@^5.2.0:
   version "5.4.0"
