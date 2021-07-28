@@ -13,7 +13,7 @@ export default function PostList({ posts, ...props }) {
             key={post.uri}
             className="post"
             itemScope
-            itemType="http://schema.org/Article"
+            itemType="https://schema.org/Article"
           >
             <time className="post-date" itemProp="datePublished">
               {post.date}
