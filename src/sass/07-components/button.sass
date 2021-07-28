@@ -1,0 +1,23 @@
+@mixin button-base()
+  // @include typography(button)
+  // @include ripple-surface
+  // @include ripple-radius-bounded
+  @extend .text-decoration-none
+
+  display: inline-flex
+  position: relative
+  height: $button-height
+  border: none
+  vertical-align: middle
+
+  &:hover
+    cursor: pointer
+
+  &:disabled
+    color: #eee
+    cursor: default
+    pointer-events: none
+
+
+.button
+  @include button-base
