@@ -1,0 +1,20 @@
+[
+  {
+    "icon": "😊",
+    "title": "Project 1",
+    "link": "/",
+    "description": "Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo."
+  },
+  {
+    "icon": "🎨",
+    "title": "Project 2",
+    "link": "/",
+    "description": "Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo."
+  },
+  {
+    "icon": "📝",
+    "title": "Project 3",
+    "link": "/",
+    "description": "Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo."
+  }
+]

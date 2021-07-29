@@ -24,7 +24,7 @@ export default function PostList({ posts, ...props }) {
               </Link>
             </h3>
             <div className="post-description" itemProp="description">
-              {parse(post.excerpt)}
+              {/* {parse(post.excerpt)} */}
             </div>
           </article>
         )

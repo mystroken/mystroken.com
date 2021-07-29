@@ -1,8 +1,25 @@
 .section
-  padding: 2rem 0
+  @extend .position-relative
+  padding: 3rem 0
+
   &-title,
   &-description
-    margin: 0
+    @extend .m-0
+
+  &-title
+    font-size: .8rem
+    font-weight: 400
+    text-transform: uppercase
+    letter-spacing: .23em
 
   &-description
+    font-size: .8rem
     color: $color-text-secondary
+
+  &-line
+    @extend .position-absolute
+    @extend .m-0
+    @extend .p-0
+    bottom: 0
+    left: 0
+    right: 0

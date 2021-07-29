@@ -7,6 +7,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Section from "../components/section"
 import PostList from "../components/post-list"
+import ProjectList from "../components/project-list"
 
 export default function HomePage({ data }) {
   const site = data.wp.generalSettings
@@ -16,10 +17,10 @@ export default function HomePage({ data }) {
     <Layout>
       <Helmet title={site.title} />
       <Seo title={site.title} />
-      <section
+      <Section
         data-scroll-section
-        id="intro-section"
-        class="section intro-section"
+        className="intro-section"
+        underline={true}
       >
         <div class="greetings">Hello</div>
         <div class="title__name">
@@ -37,8 +38,12 @@ export default function HomePage({ data }) {
             complex problems.
           </p>
         </div>
-      </section>
-      <section data-scroll-section class="section quote-section">
+      </Section>
+      <Section
+        data-scroll-section
+        className="quote-section"
+        underline={true}
+      >
         <figure itemScope itemType="https://schema.org/Quotation">
           <blockquote>
             <p itemProp="text">
@@ -49,22 +54,23 @@ export default function HomePage({ data }) {
             <cite itemProp="name">— Albert Einstein</cite>
           </figcaption>
         </figure>
-      </section>
+      </Section>
       <Section
         data-scroll-section
         title="Latest Articles"
         description="Read the latest articles from my blog."
+        underline={true}
       >
         <PostList posts={posts} />
         <Link className="button" to="/blog">
           View All
         </Link>
-        <hr />
       </Section>
       <Section
         data-scroll-section
         title="Selected Works"
         // description="Have a look on what I already did"
+        underline={true}
       >
         <ul class="projects-list">
           <li class="projects-list__item">
@@ -114,11 +120,7 @@ export default function HomePage({ data }) {
         title="Selected Projects"
         description="Have a look on what I already did"
       >
-        <ul>
-          <li>Project #1</li>
-          <li>Project #2</li>
-          <li>Project #3</li>
-        </ul>
+        <ProjectList />
       </Section>
     </Layout>
   )
@@ -126,7 +128,7 @@ export default function HomePage({ data }) {
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allWpPost(limit: 2) {
+    allWpPost(limit: 5) {
       edges {
         post: node {
           title

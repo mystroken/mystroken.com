@@ -1,11 +1,13 @@
 import React from "react"
 
-export default function Section({ title, description, children, ...props }) {
+export default function Section({ title, description, children, underline, className, ...props }) {
+  const combinedClassName = className ? `section ${className}` : 'section'
   return (
-    <section className="section" {...props}>
+    <section className={combinedClassName} {...props}>
       {title && <h2 className="section-title">{title}</h2>}
       {description && <p className="section-description">{description}</p>}
       {children}
+      {underline && <hr className="section-line" />}
     </section>
   )
 }
