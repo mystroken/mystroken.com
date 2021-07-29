@@ -1,20 +1,20 @@
 [
   {
     "icon": "😊",
-    "title": "Project 1",
-    "link": "/",
+    "name": "Project 1",
+    "link": "/p",
     "description": "Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo."
   },
   {
     "icon": "🎨",
-    "title": "Project 2",
-    "link": "/",
+    "name": "Project 2",
+    "link": "/d",
     "description": "Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo."
   },
   {
     "icon": "📝",
-    "title": "Project 3",
-    "link": "/",
+    "name": "Project 3",
+    "link": "/w",
     "description": "Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo."
   }
 ]
