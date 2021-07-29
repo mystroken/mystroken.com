@@ -8,13 +8,12 @@ export default function Quote() {
   const randomIndex = Math.round(random(0, quotes.length - 1))
   const { author, text } = quotes[randomIndex]
   return (
-    <figure itemScope itemType="https://schema.org/Quotation">
-      <blockquote>
-        <p itemProp="text">
-          {parse(text)}
-        </p>
+    <figure className="quote" itemScope itemType="https://schema.org/Quotation">
+      <blockquote className="quote-text">
+        <p itemProp="text">{parse(text)}</p>
       </blockquote>
       <figcaption
+        className="quote-author"
         itemProp="creator"
         itemScope
         itemType="https://schema.org/Person"
