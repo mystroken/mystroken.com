@@ -6,6 +6,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Section from "../components/section"
+import Quote from "../components/quote"
 import PostList from "../components/post-list"
 import ProjectList from "../components/project-list"
 
@@ -39,22 +40,15 @@ export default function HomePage({ data }) {
           </p>
         </div>
       </Section>
+
       <Section
         data-scroll-section
         className="quote-section"
         underline={true}
       >
-        <figure itemScope itemType="https://schema.org/Quotation">
-          <blockquote>
-            <p itemProp="text">
-              A problem without a solution is a poorly stated problem.
-            </p>
-          </blockquote>
-          <figcaption itemProp="creator" itemScope itemType="https://schema.org/Person">
-            <cite itemProp="name">— Albert Einstein</cite>
-          </figcaption>
-        </figure>
+        <Quote />
       </Section>
+
       <Section
         data-scroll-section
         title="Latest Articles"
@@ -66,6 +60,7 @@ export default function HomePage({ data }) {
           View All
         </Link>
       </Section>
+
       <Section
         data-scroll-section
         title="Selected Works"
@@ -115,6 +110,7 @@ export default function HomePage({ data }) {
           </li>
         </ul>
       </Section>
+
       <Section
         data-scroll-section
         title="Selected Projects"
