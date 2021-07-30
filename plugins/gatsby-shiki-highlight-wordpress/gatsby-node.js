@@ -3,10 +3,12 @@ const cheerio = require('cheerio')
 const { unescape } = require('html-escaper')
 // const { dd } = require(`dumper.js`)
 
+const SHIKI_THEME = 'min-light'
+
 /**
  * Returns the language from the given language.
- * 
- * @param {string} className 
+ *
+ * @param {string} className
  * @returns {string|null}
  */
 const getLanguageFromClassName = className => {
@@ -32,7 +34,7 @@ exports.createResolvers = ({ createResolvers }) => {
         async resolve({ content }) {
           if (typeof content !== 'string') return ''
           const $ = cheerio.load(content, null, false)
-          const highlighter = await shiki.getHighlighter({ theme: "nord" })
+          const highlighter = await shiki.getHighlighter({ theme: SHIKI_THEME })
           $('code').each((index, codeElement) => {
             // Get the code string and language
             const $codeElement = $(codeElement)
