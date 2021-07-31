@@ -6,7 +6,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Section from "../components/section"
-import Quote from "../components/quote"
+import RandomQuote from "../components/random-quote"
 import PostList from "../components/post-list"
 import ProjectList from "../components/project-list"
 
@@ -46,7 +46,7 @@ export default function HomePage({ data }) {
         className="quote-section"
         underline={true}
       >
-        <Quote />
+        <RandomQuote />
       </Section>
 
       <Section
