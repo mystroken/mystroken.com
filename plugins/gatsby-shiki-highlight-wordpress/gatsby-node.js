@@ -3,7 +3,7 @@ const cheerio = require('cheerio')
 const { unescape } = require('html-escaper')
 // const { dd } = require(`dumper.js`)
 
-const SHIKI_THEME = 'min-light'
+const SHIKI_THEME = 'github-light'
 
 /**
  * Returns the language from the given language.
