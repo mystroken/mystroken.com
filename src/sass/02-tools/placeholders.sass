@@ -1,8 +1,21 @@
+%initial-padding
+  padding-left: calc(max(5vw, env(safe-area-inset-left)))
+  padding-right: calc(max(5vw, env(safe-area-inset-right)))
+
+%container-base
+  @extend %initial-padding
+  width: 100%
+  margin: 0 auto
+
+
 %overflow-container
-  margin-left: calc( 50% - 50vw )
-  margin-right: calc( 50% - 50vw )
-  padding: 1rem 4vw
+  @extend %initial-padding
+  margin-left: calc(50% - 50vw)
+  margin-right: calc(50% - 50vw)
+  padding-top: 1rem
+  padding-bottom: 1rem
   @include media-breakpoint-up("sm")
     padding: 1rem 2rem
     margin-left: -2rem
     margin-right: -2rem
+
