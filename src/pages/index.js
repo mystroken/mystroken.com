@@ -53,11 +53,12 @@ export default function HomePage({ data }) {
         data-scroll-section
         title="Latest Articles"
         description="Read the latest articles from my blog."
+        className="posts-section"
         underline={true}
       >
         <PostList posts={posts} />
         <Link className="button" to="/blog">
-          View All
+          View All &rarr;
         </Link>
       </Section>
 
