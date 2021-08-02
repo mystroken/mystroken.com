@@ -2,12 +2,35 @@
   margin-top: 6rem
   margin-left: calc(50% - 50vw)
   margin-right: calc(50% - 50vw)
-  // background: #343434
-  // color: white
-  font-size: .75rem
+  font-size: .85rem
+  // color: $gray-600
+  a
+    // @extend .text-decoration-none
+    color: currentColor
+
   &__inner
     @extend .container
-    padding: 3rem 0
+    padding: 0 0 3rem
     text-align: center
+
+  .credits
+    font-size: .9em
+    opacity: .6
+
+
+
+.nav-social
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: .1rem 0
   a
-    @extend .text-decoration-none
+    display: flex
+    align-items: center
+    justify-content: center
+    &:not(:first-of-type)
+      margin-left: .5rem
+  &__svg
+    height: 1.75em
+    width: 1.75em
+

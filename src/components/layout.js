@@ -175,10 +175,12 @@ const Layout = ({ children }) => {
               </svg>
             </a>
           </nav>
-          <div>
-            ©{" "}
-            <span itemProp="copyrightYear">{new Date().getFullYear()}</span>{" "}
-            Mystro Ken — Built with
+          <div className="copyright">
+            © <span itemProp="copyrightYear">{new Date().getFullYear()}</span>{" "}
+            Mystro Ken
+          </div>
+          <div className="credits">
+            Built with
             {` `}
             <a
               href="https://www.gatsbyjs.com"
