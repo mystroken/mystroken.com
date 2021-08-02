@@ -1,6 +1,6 @@
 .posts
   .post
-    padding-top: 2rem
+    padding-top: 1rem
 
     &-date,
     &-title,
@@ -9,14 +9,18 @@
       margin: 0
 
     &-title
-      font-size: 1.3rem
-      // line-height: 1.5
+      font-size: 1.1rem
 
     &-date
       font-family: $font-monospace
-      font-size: .75rem
+      font-size: .7rem
       text-transform: uppercase
+      // letter-spacing: .1em
 
     &-date,
     &-description
       color: $color-text-secondary
+
+    a
+      @extend .text-decoration-none
+      color: currentColor

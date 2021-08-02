@@ -1,20 +1,26 @@
 [
   {
-    "icon": "😊",
-    "name": "Project 1",
-    "link": "/p",
-    "description": "Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo."
+    "icon": "🏄",
+    "name": "drag",
+    "link": "https://github.com/mystroken/drag",
+    "description": "A lightweight JavaScript \"hold and drag\" utility. Vanilla JS - No dependencies."
   },
   {
-    "icon": "🎨",
-    "name": "Project 2",
-    "link": "/d",
-    "description": "Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo."
+    "icon": "🌺🍃",
+    "name": "g",
+    "link": "https://github.com/mystroken/g",
+    "description": "A garden of small JavaScript utilities. Inspired by lodash."
   },
   {
-    "icon": "📝",
-    "name": "Project 3",
-    "link": "/w",
-    "description": "Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo."
+    "icon": "🌈 🔆",
+    "name": "cachu-slider",
+    "link": "https://github.com/mystroken/cachu-slider",
+    "description": "Create animated full screen and content-fit sliders efficiently."
+  },
+  {
+    "icon": "🙃",
+    "name": "mystroken.com",
+    "link": "https://github.com/mystroken/mystroken.com",
+    "description": "My personal website on top of Gatsby & WordPress."
   }
 ]

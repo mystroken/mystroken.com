@@ -1,5 +1,20 @@
 .projects
+  padding-top: 3rem
   @include media-breakpoint-up("md")
     display: grid
     grid-template-columns: 1fr 1fr
-    grid-gap: 1rem
+    grid-gap: 3rem 4rem
+
+  .project
+    &-title
+      margin: 0
+      font-size: 1.3rem
+      a
+        @extend .text-decoration-none
+        color: currentColor
+    &-icon
+      margin-right: .5rem
+
+    &-description
+      font-size: .85rem
+      color: $gray-600
