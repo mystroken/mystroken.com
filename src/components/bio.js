@@ -35,17 +35,15 @@ const Bio = (props) => {
         />
       )}
       {author?.firstName && (
-        <p>
-          Written by <strong>{author.firstName}</strong>
-          {` `}
+        <div>
+          <p><strong>{author.firstName}</strong></p>
           {author?.description || null}
-          {` `}
           {author?.twitter && (
-            <a href={`https://twitter.com/${author?.twitter || ``}`}>
-              You should follow them on Twitter
-            </a>
+            <p><a href={`https://twitter.com/${author?.twitter || ``}`}>
+              Follow me on Twitter
+            </a></p>
           )}
-        </p>
+        </div>
       )}
     </div>
   )
