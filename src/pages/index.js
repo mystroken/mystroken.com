@@ -22,14 +22,13 @@ export default function HomePage({ data }) {
         data-scroll-section
         className="intro-section"
         underline={true}
+        fluid={true}
+        style={{ paddingTop: 0 }}
       >
-        <div class="greetings">Hello</div>
-        <div class="title__name">
-          I'm
-          <br />
-          Mystro Ken
+        <div class="title__name" style={{ fontSize: '8rem', marginLeft: '10vw', }}>
+          Hello!<br />I'm Mystro Ken
         </div>
-        <div class="description">
+        <div class="description" style={{ marginLeft: '30vw', marginTop: '7vw', width: '40vw' }}>
           <p>
             A Software developer &amp; UI/UX designer focused on designing and
             developing software for people.
@@ -44,7 +43,6 @@ export default function HomePage({ data }) {
       <Section
         data-scroll-section
         className="quote-section"
-        underline={true}
       >
         <RandomQuote />
       </Section>
@@ -54,7 +52,6 @@ export default function HomePage({ data }) {
         title="Latest Articles"
         description="Read the latest articles from my blog."
         className="posts-section"
-        underline={true}
       >
         <PostList posts={posts} />
         <Link className="button" to="/blog">
