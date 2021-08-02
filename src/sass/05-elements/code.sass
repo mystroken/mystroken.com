@@ -1,17 +1,16 @@
 :not(pre) > code
   padding: .1em .4em
-  // background: darken($color-primary-light, 5%)
-  // color: darken($color-primary, 25%)
+  background: $color-primary-light
+  color: darken($color-primary, 40%)
   border-radius: 3px
-
-@debug brightness($color-primary)
 
 pre
   @extend %overflow-container !optional
   padding-left: 0
-  padding-right: luminance($color-primary)
+  padding-right: 0
   overflow: auto
-  background: hsb(hue($color-primary), saturation($color-primary) * 0.0202020202%, brightness($color-primary) * 1.6667%, .9) !important // $color-primary-light !important
+  background: $gray-100 !important
+  // background: hsb((hue($color-primary) * 0.991), (saturation($color-primary) * 0.024), (brightness($color-primary) * 1.16)) !important
   @include media-breakpoint-up("sm")
     border-radius: 3px
 

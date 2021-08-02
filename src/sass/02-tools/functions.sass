@@ -1,13 +1,5 @@
 @use "sass:math"
 
-/**
- * Returns the brightness percentage of a color
- * the value is unitless
- */
-@function brightness($color)
-  $sum: red($color) + green($color) + blue($color)
-  @return math.div($sum, 255*3)
-
 /// Returns the luminance of `$color` as a float (between 0 and 1)
 /// 1 is pure white, 0 is pure black
 /// @param {Color} $color - Color
@@ -29,6 +21,12 @@
     $colors: map-merge($colors, ($name: $value))
 
   @return (map-get($colors, 'red') * .2126) + (map-get($colors, 'green') * .7152) + (map-get($colors, 'blue') * .0722)
+
+/// Returns the brightness percentage of a color
+/// the value is unitless
+@function brightness($color)
+  $luminance: luminance($color)
+  @return (1 - $luminance) * 100
 
 // Returns a color from the hsb equation (adobe color system)
 @function hsb($hue, $saturation, $brightness, $alpha: 1)

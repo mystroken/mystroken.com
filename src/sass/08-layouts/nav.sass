@@ -10,10 +10,13 @@
   &.dark
     padding-top: .618rem
     padding-bottom: .618rem
-    background: rgba(#000, .92)
-    color: white
+    background: rgba($gray-800, .92)
+    color: $gray-200
+    border-bottom: 1px solid #f6f6f6
   &.pull-up
     transform: translate3d(0,-100%,0)
+  a
+    color: currentColor !important
 
 .nav-content
   @extend .container-fluid
