@@ -7,3 +7,33 @@
     font-size: 5rem
     font-weight: bold
     line-height: 1
+
+.quote-section
+  font-size: 2rem
+  line-height: 1.5
+
+.quote-text
+  @extend .m-0
+  @extend .p-0
+  background: none
+  border: none
+
+  &::before,
+  &::after
+    font-size: 3.5em
+    line-height: 1
+
+  &::before
+    content: '❝'
+    background: url(/assets/quote.svg)
+
+  // &::after
+  //   content: '❞'
+  //   float: right
+
+.quote-author
+  margin-top: 1rem
+  clear: both
+  font-size: .6em
+  cite
+    font-style: normal

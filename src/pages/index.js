@@ -21,7 +21,7 @@ export default function HomePage({ data }) {
       <Section
         data-scroll-section
         className="intro-section"
-        underline={true}
+        underline={false}
         fluid={true}
         style={{ paddingTop: 0 }}
       >
