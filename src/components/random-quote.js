@@ -18,8 +18,8 @@ export default function RandomQuote() {
         itemScope
         itemType="https://schema.org/Person"
       >
-        <cite>
-          <span>—</span> <span itemProp="name">{parse(author)}</span>
+        <cite itemProp="name">
+          {parse(author)}
         </cite>
       </figcaption>
     </figure>

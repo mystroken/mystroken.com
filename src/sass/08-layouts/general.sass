@@ -9,32 +9,42 @@
     line-height: 1
 
 .quote-section
-  font-size: 2rem
-  line-height: 1.5
+  font-size: 3rem
+  line-height: 1.1
+  text-align: center
+  @include media-breakpoint-up("md")
+    font-size: 4rem
+  @include media-breakpoint-up("lg")
+    font-size: 6rem
 
 .quote-text
   @extend .m-0
   @extend .p-0
   background: none
   border: none
-  line-height: 1.2
 
   &::before,
   &::after
-    font-size: 3em
     line-height: 1
 
   &::before
-    content: '❝'
-    background: url(/assets/quote.svg)
-
-  // &::after
-  //   content: '❞'
-  //   float: right
+    // content: '❝'
+    content: ' '
+    display: block
+    height: 3em
+    width: 3em
+    margin: 0 auto
+    background-image: url(/static/quotes.svg)
+    background-repeat: no-repeat
+    background-position: center
+    background-size: contain
+    opacity: .1
 
 .quote-author
+  display: block
   margin-top: 1rem
+  padding: 1.5em 0
   clear: both
-  font-size: .6em
+  font-size: .35em
   cite
     font-style: normal

@@ -42,6 +42,7 @@ export default function HomePage({ data }) {
 
       <Section
         data-scroll-section
+        fluid={true}
         className="quote-section"
       >
         <RandomQuote />
