@@ -2,9 +2,7 @@ import React from "react"
 import classNames from "classnames"
 import { Link } from "gatsby"
 
-export default function Navigation({
-  isActive
-}) {
+export default function Navigation({ isActive }) {
   return (
     <div className={classNames("menu", { "is-active": isActive })}>
       <Link

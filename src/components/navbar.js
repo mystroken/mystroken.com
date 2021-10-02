@@ -6,6 +6,7 @@
  *
  * @author Mystro Ken <mystroken@gmail.com>
  */
+
 import React, { useState } from "react"
 import classNames from "classnames"
 import { Link } from "gatsby"
@@ -16,6 +17,16 @@ import Navigation from "./navigation"
 export default function NavBar({ disabled }) {
   const [isBurgerClosed, setBurgerClosed] = useState(true)
   const [isNavigationActive, setNavigationActive] = useState(false)
+
+  /**
+   * When the user
+   * click on the burger.
+   */
+  const handleClickOnBurger = () => {
+    const shouldCloseBurger = !isBurgerClosed
+    setBurgerClosed(shouldCloseBurger)
+    setNavigationActive(!shouldCloseBurger)
+  }
 
   return (
     <nav
@@ -39,13 +50,7 @@ export default function NavBar({ disabled }) {
           />
         </svg>
       </Link>
-      <Burger
-        isClosed={isBurgerClosed}
-        handleToggle={() => {
-          setBurgerClosed(!isBurgerClosed)
-          setNavigationActive(!isBurgerClosed)
-        }}
-      />
+      <Burger isClosed={isBurgerClosed} handleToggle={handleClickOnBurger} />
       <Navigation isActive={isNavigationActive} />
     </nav>
   )

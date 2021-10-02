@@ -31,9 +31,13 @@ $nav-padding-left: 7.141354vw
 
 .menu
   @extend .m-0
-  @extend .display-flex
+  @extend .display-none
   flex-direction: column
   top: 13rem
+  &.is-active
+    @extend .display-flex
+
+
 
   &-link
     @extend .text-decoration-none
