@@ -37,8 +37,6 @@ $nav-padding-left: 7.141354vw
   &.is-active
     @extend .display-flex
 
-
-
   &-link
     @extend .text-decoration-none
     display: inline-block
@@ -52,3 +50,16 @@ $nav-padding-left: 7.141354vw
     height: 2px
     margin: 2px 0
     background: $black
+    transition: all .4s ease-in-out
+    &:first-child
+      // transform-origin: 0 100%
+    &:nth-child(3)
+      // transform-origin: 0 0
+  &.is-open
+    .line
+      &:first-child
+        transform: translate3d(0,4px,0) rotate(45deg)
+      &:nth-child(2)
+        opacity: 0
+      &:nth-child(3)
+        transform: translate3d(0,-4px,0) rotate(-45deg)
