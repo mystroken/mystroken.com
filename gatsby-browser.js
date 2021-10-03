@@ -7,14 +7,14 @@ require("@wordpress/block-library/build-style/style.css")
 require("./src/css/locomotive-scroll.css")
 require("./src/sass/style.sass")
 
-// Logs when the client route changes
-exports.onRouteUpdate = ({ location, prevLocation }) => {
-  // console.log(document.documentElement)
-  // console.log("Updated !")
-  // document.querySelector('#___gatsby').style.opacity = '1'
+exports.onPreRouteUpdate = ({ location, prevLocation }) => {
+  const event = new global.window.CustomEvent("page-transition::exit", {
+    location,
+    prevLocation,
+  })
+  global.window.dispatchEvent(event)
 }
 
-exports.onPreRouteUpdate = () => {
-  // console.log("Prefetching...")
-  // document.querySelector('#___gatsby').style.opacity = '0'
+exports.onRouteUpdate = () => {
+  console.log("Page change !")
 }

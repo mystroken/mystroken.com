@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react"
 
+import Transition from "./transition"
 import Scroll from "./scroll"
 import NavBar from "./navbar"
 
@@ -40,7 +41,7 @@ const Layout = ({ children, location }) => {
   }, [location])
 
   return (
-    <>
+    <Transition location={location}>
       {/* Here we pass the triggers to the component.
         Anything that impacts the innerHeight, for example: Font Loaded */}
       <Scroll triggers={location} onUpdate={handleScrollUpdate} />
@@ -150,8 +151,9 @@ const Layout = ({ children, location }) => {
           </div>
         </div>
       </footer>
-    </>
+    </Transition>
   )
 }
 
+Layout.whyDidYouRender = true
 export default Layout
