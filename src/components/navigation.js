@@ -1,6 +1,6 @@
 import React from "react"
 import classNames from "classnames"
-import { Link } from "gatsby"
+import Link from "./link"
 
 export default function Navigation({ isActive }) {
   return (

@@ -9,10 +9,10 @@
 
 import React, { useState } from "react"
 import classNames from "classnames"
-import { Link } from "gatsby"
 
 import Burger from "./burger"
 import Navigation from "./navigation"
+import Link from "./link"
 
 export default function NavBar({ disabled }) {
   const [isBurgerClosed, setBurgerClosed] = useState(true)

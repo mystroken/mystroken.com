@@ -1,6 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
 import parse from "html-react-parser"
+
+import Link from "./link"
 
 export default function PostList({ posts, ...props }) {
   return (

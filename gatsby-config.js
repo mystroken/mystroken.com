@@ -109,5 +109,11 @@ module.exports = {
      * To learn more, visit: https://gatsby.dev/offline
      */
     `gatsby-plugin-offline`,
+
+    /**
+     * Animate transitions between pages on your Gatsby site
+     * See https://www.gatsbyjs.com/docs/how-to/adding-common-features/adding-page-transitions-with-plugin-transition-link/
+     */
+    `gatsby-plugin-transition-link`,
   ],
 }
