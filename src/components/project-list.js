@@ -3,7 +3,7 @@ import parse from "html-react-parser"
 
 import projects from "../../content/projects.json"
 
-export default function ProjectList(props) {
+const ProjectList = (props) => {
   return (
     <div className="projects" {...props}>
       {projects.map(({ name, icon, description, link }) => (
@@ -29,3 +29,5 @@ export default function ProjectList(props) {
     </div>
   )
 }
+
+export default React.memo(ProjectList)

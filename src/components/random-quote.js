@@ -4,7 +4,7 @@ import parse from "html-react-parser"
 import quotes from "../../content/quotes.json"
 
 const random = (min, max) => min + Math.random() * (max - min)
-export default function RandomQuote() {
+const RandomQuote = () => {
   const randomIndex = Math.round(random(0, quotes.length - 1))
   const { author, text } = quotes[randomIndex]
   return (
@@ -25,3 +25,5 @@ export default function RandomQuote() {
     </figure>
   )
 }
+
+export default React.memo(RandomQuote)

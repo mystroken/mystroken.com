@@ -2,12 +2,19 @@
 // import "typeface-montserrat"
 // import "typeface-merriweather"
 
-// normalize CSS across browsers
-// import "./src/css/normalize.css"
-
 // custom CSS styles
-// import "./src/css/style.css"
-// import "./src/atom-one-dark.css"
-import "@wordpress/block-library/build-style/style.css"
-import "./src/css/locomotive-scroll.css"
-import "./src/sass/style.sass"
+require("@wordpress/block-library/build-style/style.css")
+require("./src/css/locomotive-scroll.css")
+require("./src/sass/style.sass")
+
+// Logs when the client route changes
+exports.onRouteUpdate = ({ location, prevLocation }) => {
+  // console.log(document.documentElement)
+  // console.log("Updated !")
+  // document.querySelector('#___gatsby').style.opacity = '1'
+}
+
+exports.onPreRouteUpdate = () => {
+  // console.log("Prefetching...")
+  // document.querySelector('#___gatsby').style.opacity = '0'
+}

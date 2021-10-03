@@ -6,7 +6,7 @@ export const scroll = {
     smooth: true,
     smoothMobile: false,
     // getDirection: true,
-    touchMultiplier: 2.5,
-    lerp: 0.15,
+    // touchMultiplier: 2.5,
+    // lerp: 0.15,
   },
 }

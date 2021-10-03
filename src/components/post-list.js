@@ -3,7 +3,7 @@ import parse from "html-react-parser"
 
 import Link from "./link"
 
-export default function PostList({ posts, ...props }) {
+const PostList = ({ posts, ...props }) => {
   return (
     <div className="posts" {...props}>
       {posts.map(post => {
@@ -33,3 +33,5 @@ export default function PostList({ posts, ...props }) {
     </div>
   )
 }
+
+export default React.memo(PostList)
