@@ -111,9 +111,21 @@ module.exports = {
     `gatsby-plugin-offline`,
 
     /**
+     * This plugin enables adding components which live
+     * above the page components and persist across page changes.
+     * See: https://www.gatsbyjs.com/plugins/gatsby-plugin-layout/
+     */
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout.js`),
+      },
+    },
+
+    /**
      * Animate transitions between pages on your Gatsby site
      * See https://www.gatsbyjs.com/docs/how-to/adding-common-features/adding-page-transitions-with-plugin-transition-link/
      */
-    `gatsby-plugin-transition-link`,
+    // `gatsby-plugin-transition-link`,
   ],
 }

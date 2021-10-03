@@ -15,7 +15,7 @@ export default function ProjectList(props) {
         >
           <h3 className="project-title">
             <a href={link} target="_blank" rel="noreferrer" itemProp="url">
-              <span class="project-icon">{parse(icon)}</span>
+              <span className="project-icon">{parse(icon)}</span>
               <span className="project-name" itemProp="name">
                 {parse(name)}
               </span>

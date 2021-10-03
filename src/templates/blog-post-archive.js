@@ -3,7 +3,6 @@ import { Link, graphql } from "gatsby"
 import parse from "html-react-parser"
 
 import Bio from "../components/bio"
-import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogIndex = ({
@@ -14,19 +13,19 @@ const BlogIndex = ({
 
   if (!posts.length) {
     return (
-      <Layout isHomePage>
+      <>
         <Seo title="Software developer & designer" />
         <Bio />
         <p>
           No blog posts found. Add posts to your WordPress site and they'll
           appear here!
         </p>
-      </Layout>
+      </>
     )
   }
 
   return (
-    <Layout isHomePage>
+    <>
       <Seo title="Software developer & designer" />
 
       <Bio data-scroll-section />
@@ -64,7 +63,7 @@ const BlogIndex = ({
         </>
       )}
       {nextPagePath && <Link data-scroll-section to={nextPagePath}>Next page</Link>}
-    </Layout>
+    </>
   )
 }
 

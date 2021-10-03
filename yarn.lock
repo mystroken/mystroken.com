@@ -1385,7 +1385,7 @@
     core-js-pure "^3.15.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.1.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.15.4":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
@@ -3447,6 +3447,11 @@ alphanum-sort@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
+
+animejs@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/animejs/-/animejs-3.2.1.tgz#de9fe2e792f44a777a7fdf6ae160e26604b0cdda"
+  integrity sha512-sWno3ugFryK5nhiDm/2BKeFCpZv7vzerWUcUPyAZLDhMek3+S/p418ldZJbJXo5ZUOpfm2kP2XRO4NJcULMy9A==
 
 anser@^2.0.1:
   version "2.0.1"
@@ -7604,12 +7609,12 @@ gatsby-plugin-catch-links@^3.10.0:
     "@babel/runtime" "^7.14.6"
     escape-string-regexp "^1.0.5"
 
-gatsby-plugin-layout@^2.5.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-2.10.0.tgz#edac4b11905bdd2ad71fc5dc98f64bd92fddbc9b"
-  integrity sha512-JL56Dbv/FFp5oma3NYwRm+Pt8faBVj4nPhUWoVXDZe3OzlmY2hTV26T7h4qquQdTMictsIS9ddwKM3YVtMVV4Q==
+gatsby-plugin-layout@^2.14.0:
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-2.14.0.tgz#09bdc6a3dc309cd7de06b50ce05ae519ca50ec44"
+  integrity sha512-/jQzYXqPO1YzVk0/Y0iAFNDY85ciclHWfS6QtiyxUiRYp2nX/u0dfQzNTVBGLdS3E2KJBDnBWsnEM72Gg9ZvXQ==
   dependencies:
-    "@babel/runtime" "^7.14.6"
+    "@babel/runtime" "^7.15.4"
 
 gatsby-plugin-manifest@^3.3.0:
   version "3.10.0"

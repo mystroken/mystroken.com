@@ -1,42 +1,34 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, { useState } from "react"
 
+import Scroll from "./scroll"
 import NavBar from "./navbar"
 
-const Layout = ({ children }) => {
-  const scrollContainerEl = useRef(null)
+// This `location` prop will serve as a callback on route change
+const Layout = ({ children, location }) => {
+  let lastYScrollPosition = 0
   const [shouldDisableNavbar, setNavbarDisabled] = useState(false)
 
-  useEffect(() => {
-    let scroll = null
-    let lastYScrollPosition = 0
-    import("locomotive-scroll").then(({ default: LocomotiveScroll }) => {
-      scroll = new LocomotiveScroll({
-        el: document.querySelector("#gatsby-focus-wrapper"),
-        smooth: true,
-      })
-
-      scroll.on("scroll", args => {
-        // If we scroll down, we need the hide
-        // elements on the NavBar but if we scroll up rather,
-        // we need to show them back.
-        setNavbarDisabled(args.scroll.y > lastYScrollPosition)
-        lastYScrollPosition = args.scroll.y
-      })
-    })
-
-    return () => {
-      scroll && scroll.destroy()
-    }
-  }, [])
+  const handleScrollUpdate = ({ y }) => {
+    // If we scroll down, we need the hide
+    // elements on the NavBar but if we scroll up rather,
+    // we need to show them back.
+    setNavbarDisabled(y > lastYScrollPosition)
+    lastYScrollPosition = y
+  }
 
   return (
     <>
-      <NavBar disabled={shouldDisableNavbar} />
+      {/* Here we pass the callbacks to the component.
+        Anything that impacts the innerHeight, for example: Font Loaded */}
+      <Scroll
+        callbacks={location}
+        onUpdate={scroll => handleScrollUpdate(scroll)}
+      />
 
-      <main ref={scrollContainerEl} className="main">
+      <NavBar disabled={shouldDisableNavbar} />
+      <main className="main">
         {children}
       </main>
-
       <footer
         data-scroll-section
         id="footer"
@@ -101,7 +93,8 @@ const Layout = ({ children }) => {
             </a>
           </nav>
           <div className="copyright">
-            © 1993 — <span itemProp="copyrightYear">{new Date().getFullYear()}</span>{" "}
+            © 1993 —{" "}
+            <span itemProp="copyrightYear">{new Date().getFullYear()}</span>{" "}
             Mystro Ken
           </div>
           <div className="credits">

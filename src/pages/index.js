@@ -2,8 +2,6 @@ import React from "react"
 import Helmet from "react-helmet"
 import { graphql, Link } from "gatsby"
 
-// import Bio from "../components/bio"
-import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Section from "../components/section"
 import RandomQuote from "../components/random-quote"
@@ -15,7 +13,7 @@ export default function HomePage({ data }) {
   const posts = data.allWpPost.edges.map(({ post }) => post)
 
   return (
-    <Layout>
+    <>
       <Helmet title={site.title} />
       <Seo title={site.title} />
       <Section
@@ -25,10 +23,10 @@ export default function HomePage({ data }) {
         fluid={true}
         style={{ paddingTop: 0 }}
       >
-        <div class="title__name" style={{ fontSize: '8rem', marginLeft: '10vw', }}>
+        <div className="title__name" style={{ fontSize: '8rem', marginLeft: '10vw', }}>
           Hello!<br />I'm Mystro Ken
         </div>
-        <div class="description" style={{ marginLeft: '30vw', marginTop: '7vw', width: '40vw' }}>
+        <div className="description" style={{ marginLeft: '30vw', marginTop: '7vw', width: '40vw' }}>
           <p>
             A Software developer &amp; UI/UX designer focused on designing and
             developing software for people.
@@ -66,10 +64,10 @@ export default function HomePage({ data }) {
         // description="Have a look on what I already did"
         underline={true}
       >
-        <ul class="projects-list">
-          <li class="projects-list__item">
+        <ul className="projects-list">
+          <li className="projects-list__item">
             <a
-              class="projects-list__link"
+              className="projects-list__link"
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.flexyla.com"
@@ -77,9 +75,9 @@ export default function HomePage({ data }) {
               FlexyLa
             </a>
           </li>
-          <li class="projects-list__item">
+          <li className="projects-list__item">
             <a
-              class="projects-list__link"
+              className="projects-list__link"
               target="_blank"
               rel="noopener noreferrer"
               href="https://btt.mystroken.com"
@@ -87,9 +85,9 @@ export default function HomePage({ data }) {
               B&amp;TT Notaires Associés
             </a>
           </li>
-          <li class="projects-list__item">
+          <li className="projects-list__item">
             <a
-              class="projects-list__link"
+              className="projects-list__link"
               target="_blank"
               rel="noopener noreferrer"
               href="https://okeko.fr"
@@ -97,9 +95,9 @@ export default function HomePage({ data }) {
               Okeko
             </a>
           </li>
-          <li class="projects-list__item">
+          <li className="projects-list__item">
             <a
-              class="projects-list__link"
+              className="projects-list__link"
               target="_blank"
               rel="noopener noreferrer"
               href="https://kouaba.mystroken.com"
@@ -117,7 +115,7 @@ export default function HomePage({ data }) {
       >
         <ProjectList />
       </Section>
-    </Layout>
+    </>
   )
 }
 
