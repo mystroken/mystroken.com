@@ -1,10 +1,11 @@
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 // We are excluding this from loading at build time in gatsby-node.js
 import LocomotiveScroll from "locomotive-scroll"
 
 import { scroll } from "../config"
 
-const Scroll = callbacks => {
+const Scroll = ({triggers, onUpdate}) => {
+
   useEffect(() => {
     let locomotiveScroll
     locomotiveScroll = new LocomotiveScroll({
@@ -16,17 +17,14 @@ const Scroll = callbacks => {
     // Exposing to the global scope for ease of use.
     window.scroll = locomotiveScroll
 
-    locomotiveScroll.on("scroll", func => {
-      // Update `data-direction` with scroll direction.
-      document.documentElement.setAttribute("data-direction", func.direction)
-    })
+    locomotiveScroll.on("scroll", args => onUpdate(args))
 
     return () => {
       if (locomotiveScroll) locomotiveScroll.destroy()
     }
-  }, [callbacks])
+  }, [triggers, onUpdate])
 
   return null
 }
 
-export default Scroll
+export default React.memo(Scroll)

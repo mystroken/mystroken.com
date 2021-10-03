@@ -7,27 +7,14 @@
  * @author Mystro Ken <mystroken@gmail.com>
  */
 
-import React, { useState } from "react"
+import React from "react"
 import classNames from "classnames"
 
 import Burger from "./burger"
 import Navigation from "./navigation"
 import Link from "./link"
 
-export default function NavBar({ disabled }) {
-  const [isBurgerClosed, setBurgerClosed] = useState(true)
-  const [isNavigationActive, setNavigationActive] = useState(false)
-
-  /**
-   * When the user
-   * click on the burger.
-   */
-  const handleClickOnBurger = () => {
-    const shouldCloseBurger = !isBurgerClosed
-    setBurgerClosed(shouldCloseBurger)
-    setNavigationActive(!shouldCloseBurger)
-  }
-
+export default function NavBar({ disabled, collapsed, onToggle }) {
   return (
     <nav
       className={classNames("nav", {
@@ -50,8 +37,8 @@ export default function NavBar({ disabled }) {
           />
         </svg>
       </Link>
-      <Burger isClosed={isBurgerClosed} handleToggle={handleClickOnBurger} />
-      <Navigation isActive={isNavigationActive} />
+      <Burger isClosed={collapsed} handleToggle={() => onToggle()} />
+      <Navigation isActive={!collapsed} />
     </nav>
   )
 }

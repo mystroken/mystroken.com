@@ -1,34 +1,56 @@
-import React, { useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 
 import Scroll from "./scroll"
 import NavBar from "./navbar"
 
 // This `location` prop will serve as a callback on route change
 const Layout = ({ children, location }) => {
-  let lastYScrollPosition = 0
-  const [shouldDisableNavbar, setNavbarDisabled] = useState(false)
-
-  const handleScrollUpdate = ({ y }) => {
-    // If we scroll down, we need the hide
-    // elements on the NavBar but if we scroll up rather,
-    // we need to show them back.
-    setNavbarDisabled(y > lastYScrollPosition)
-    lastYScrollPosition = y
+  const scroll = {
+    delta: 10,
+    amount: useRef(0),
   }
+  const [isNavbarDisabled, setNavbarDisabled] = useState(false)
+  const [isNavbarCollapsed, setNavbarCollapsed] = useState(true)
+
+  /**
+   * handleScrollUpdate
+   *
+   * If we scroll down, we need the hide
+   * elements on the NavBar but if we scroll up rather,
+   * we need to show them back.
+   */
+  const handleScrollUpdate = useCallback(
+    ({ scroll: { y } }) => {
+      // First of all, let's make sure that we
+      // have scrolled from a significant amount before doing our verification.
+      if (Math.abs(y - scroll.amount.current) <= scroll.delta) return
+
+      if (y > scroll.amount.current) setNavbarDisabled(true)
+      if (y < scroll.amount.current) setNavbarDisabled(false)
+      setNavbarCollapsed(true)
+      scroll.amount.current = y
+    },
+    [scroll.amount, scroll.delta]
+  )
+
+  useEffect(() => {
+    // On page changing, we need to active the navbar back.
+    setNavbarCollapsed(true)
+    setNavbarDisabled(false)
+  }, [location])
 
   return (
     <>
-      {/* Here we pass the callbacks to the component.
+      {/* Here we pass the triggers to the component.
         Anything that impacts the innerHeight, for example: Font Loaded */}
-      <Scroll
-        callbacks={location}
-        onUpdate={scroll => handleScrollUpdate(scroll)}
-      />
+      <Scroll triggers={location} onUpdate={handleScrollUpdate} />
 
-      <NavBar disabled={shouldDisableNavbar} />
-      <main className="main">
-        {children}
-      </main>
+      <NavBar
+        disabled={isNavbarDisabled}
+        collapsed={isNavbarCollapsed}
+        onToggle={() => setNavbarCollapsed(!isNavbarCollapsed)}
+      />
+      <main className="main">{children}</main>
       <footer
         data-scroll-section
         id="footer"
