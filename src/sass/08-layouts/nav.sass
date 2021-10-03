@@ -1,5 +1,7 @@
 $nav-padding-top: 1.618rem
 $nav-padding-left: 7.141354vw
+$burger-width: 1.78rem // 40px
+$burger-stroke-width: 2px
 
 .nav
   @extend .position-fixed
@@ -43,23 +45,25 @@ $nav-padding-left: 7.141354vw
     letter-spacing: .032em
 
 .burger
-  width: 25px
+  width: $burger-width
   cursor: pointer
+  outline: none
   .line
     display: block
-    height: 2px
-    margin: 2px 0
+    height: $burger-stroke-width
+    margin: $burger-stroke-width 0
     background: $black
     transition: all .4s ease-in-out
-    &:first-child
-      // transform-origin: 0 100%
     &:nth-child(3)
-      // transform-origin: 0 0
+      transform: translate3d(-25%,0,0) scale3d(.5,1,1)
+  &:hover
+    .line:nth-child(3)
+      transform: scale3d(1,1,1)
   &.is-open
     .line
       &:first-child
-        transform: translate3d(0,4px,0) rotate(45deg)
+        transform: translate3d(0,200%,0) rotate(45deg)
       &:nth-child(2)
         opacity: 0
       &:nth-child(3)
-        transform: translate3d(0,-4px,0) rotate(-45deg)
+        transform: scale3d(1,1,1) translate3d(0,-200%,0) rotate(-45deg)
