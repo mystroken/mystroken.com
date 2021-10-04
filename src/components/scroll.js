@@ -18,7 +18,7 @@ const Scroll = ({triggers, onUpdate}) => {
     window.scroll = locomotiveScroll
 
     locomotiveScroll.on("scroll", args => {
-      console.log(args)
+      // console.log(args)
       onUpdate(args)
     })
 

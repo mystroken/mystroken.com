@@ -1,15 +1,18 @@
-import React from "react"
+import React, { useCallback } from "react"
+import classNames from "classnames"
 
 export default function BackToTop({ disabled, progress, onClick }) {
-  const handleKeyDown = e => {
+  const handleKeyDown = useCallback(e => {
     if (e.keyCode === 13) {
       onClick()
     }
-  }
+  }, [onClick])
 
   return (
     <div
-      className="back-to-top"
+      className={classNames("back-to-top", {
+        "is-disabled": disabled
+      })}
       onClick={onClick}
       onKeyDown={handleKeyDown}
       role="button"

@@ -1,20 +1,24 @@
-import React from "react"
+import React, { useCallback } from "react"
 import classNames from "classnames"
 
 export default function Burger({ isClosed, handleToggle }) {
 
-  const handleKeyDown = e => {
+  const handleKeyDown = useCallback(e => {
     if (e.keyCode === 13) {
-      handleToggle();
+      handleToggle(!isClosed)
     }
-  }
+  }, [isClosed, handleToggle])
+
+  const handleOnClick = useCallback(() => {
+    handleToggle(!isClosed)
+  }, [handleToggle, isClosed])
 
   return (
     <div
       className={classNames("burger", {
         "is-open": !isClosed
       })}
-      onClick={handleToggle}
+      onClick={handleOnClick}
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex="0"

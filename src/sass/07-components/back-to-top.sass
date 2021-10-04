@@ -6,6 +6,7 @@
   right: 4.45vw
   z-index: 2
   cursor: pointer
+  transition: opacity $transition-duration
   &::before
     @extend .position-absolute
     content: ""
@@ -15,6 +16,10 @@
     right: 0
     border: 6px solid rgba($black, .1)
     border-radius: 50%
+  &.is-disable
+    opacity: 0
+    visibility: hidden
+    pointer-events: none
 
   svg
     fill: none

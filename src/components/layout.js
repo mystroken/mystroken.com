@@ -13,60 +13,140 @@ const Layout = ({ children, location }) => {
   }
   const [isNavbarDisabled, setNavbarDisabled] = useState(false)
   const [isNavbarCollapsed, setNavbarCollapsed] = useState(true)
-  const [isBackToTopDisabled, setBackToTopDisabled] = useState(false)
+  const [isBackToTopDisabled, setBackToTopDisabled] = useState(true)
   const [backToTopProgress, setBackToTopProgress] = useState(0)
+  const windowInnerWidth = useRef(0)
+  const windowInnerHeight = useRef(0)
 
   /**
-   * handleScrollUpdate
-   *
-   * If we scroll down, we need the hide
-   * elements on the NavBar but if we scroll up rather,
-   * we need to show them back.
+   * Set the current window dimensions.
+   * @param {{ width: number, height: number }} entry
    */
-  const handleScrollUpdate = useCallback(
-    ({ scroll: target, limit }) => {
-      // First of all, let's make sure that we
-      // have scrolled from a significant amount before doing our verification.
-      if (target.y <= scroll.delta) return // When iOs bounce on top
-      if ((target.y - 0) >= (limit.y - window.innerHeight)) return // When iOs bounce on bottom
-      if (Math.abs(target.y - scroll.amount.current) <= scroll.delta) return
-      document.querySelector(".nav-logo").innerHTML = target.y
-
-      if (target.y > scroll.amount.current) setNavbarDisabled(true)
-      if (target.y < scroll.amount.current) setNavbarDisabled(false)
-
-      setNavbarCollapsed(true)
-      scroll.amount.current = target.y
-    },
-    [scroll.amount, scroll.delta]
-  )
-
-  const handleOnClikOnBackToTop = () => {
-    // console.log("Back to top has been clicked !")
+  const handleWindowResize = ({ width, height }) => {
+    windowInnerWidth.current = width
+    windowInnerHeight.current = height
   }
 
+  const addEventListeners = () => {}
+  const removeEventListeners = () => {}
+
+  /**
+   * onScroll
+   *
+   * Manipulate components' behaviors on scroll.
+   */
+  const onScroll = useCallback(
+    scrollData => {
+      const { scroll: target, limit } = scrollData
+      // First of all, let's make sure that we
+      // have scrolled from a significant amount before doing anything.
+      if (target.y <= scroll.delta) return // When iOs bounce on top
+      if (target.y >= limit.y - windowInnerHeight.current) return // When iOs bounce on bottom
+      if (Math.abs(target.y - scroll.amount.current) <= scroll.delta) return
+
+      // Handle components
+      handleNavBarOnScroll(target)
+      handleBackToTopOnScroll()
+
+      // Store the current position.
+      scroll.amount.current = target.y
+    },
+    [scroll.amount, scroll.delta, handleNavBarOnScroll]
+  )
+
+  /**
+   * Navbar on scroll
+   *
+   * If we scroll down, we need the hide
+   * elements for showing them back when we scroll up
+   * @param {{ x: number, y: number }} target The targeted scroll amount
+   */
+  const handleNavBarOnScroll = useCallback(
+    target => {
+      if (target.y > scroll.amount.current) setNavbarDisabled(true)
+      if (target.y < scroll.amount.current) setNavbarDisabled(false)
+      setNavbarCollapsed(true)
+    },
+    [scroll.amount]
+  )
+
+  /**
+   * BackToTop on scroll
+   *
+   * - Hide when we've not
+   *   reach a certain amount of scroll
+   * - Show the scroll progress
+   */
+  const handleBackToTopOnScroll = () => {
+    if (scroll.amount.current >= 200) setBackToTopDisabled(false)
+  }
+
+  const handleOnClikOnBackToTop = useCallback(() => {
+    // console.log("Back to top has been clicked !")
+  }, [isBackToTopDisabled])
+
+  /**
+   * When
+   * componentDidMount,
+   * componentWillUnmount
+   */
   useEffect(() => {
-    // On page changing, we need to active the navbar back.
+    const ro = new ResizeObserver(entries => {
+      for (let entry of entries) handleWindowResize(entry)
+    })
+
+    /**
+     * Let's leave the browser decides
+     * when the run our functions.
+     */
+    window.requestAnimationFrame(() => {
+      // Get the window dimensions first
+      // then subscribe
+      handleWindowResize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+      ro.observe(document.documentElement)
+
+      // After that we can attach event listeners
+      addEventListeners()
+    })
+
+    /**
+     * Clean up
+     */
+    return () => {
+      ro.disconnect()
+      removeEventListeners()
+    }
+  }, [])
+
+  /**
+   * Runs each time page is changed.
+   */
+  useEffect(() => {
+    // We need to active the navbar back.
     setNavbarCollapsed(true)
     setNavbarDisabled(false)
+    setBackToTopDisabled(true)
   }, [location])
 
   return (
     <Transition location={location}>
       {/* Here we pass the triggers to the component.
         Anything that impacts the innerHeight, for example: Font Loaded */}
-      <Scroll triggers={location} onUpdate={handleScrollUpdate} />
+      <Scroll triggers={location} onUpdate={onScroll} />
 
       <BackToTop
         disabled={isBackToTopDisabled}
         progress={backToTopProgress}
-        onClick={() => handleOnClikOnBackToTop()}
+        onClick={handleOnClikOnBackToTop}
       />
 
       <NavBar
-        // disabled={isNavbarDisabled}
+        disabled={isNavbarDisabled}
         collapsed={isNavbarCollapsed}
-        onToggle={() => setNavbarCollapsed(!isNavbarCollapsed)}
+        onToggle={setNavbarCollapsed}
       />
       <main className="main">{children}</main>
       <footer

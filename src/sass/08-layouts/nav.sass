@@ -9,7 +9,7 @@ $burger-stroke-width: 2px
   left: 0
   right: 0
   z-index: 2
-  transition: .4s
+  transition: $transition-duration
   font-size: .75rem
   &.is-disabled
     opacity: 0
@@ -53,7 +53,7 @@ $burger-stroke-width: 2px
     height: $burger-stroke-width
     margin: $burger-stroke-width 0
     background: $black
-    transition: all .4s ease-in-out
+    transition: all $transition-duration ease-in-out
     &:nth-child(3)
       transform: translate3d(-25%,0,0) scale3d(.5,1,1)
   &:hover

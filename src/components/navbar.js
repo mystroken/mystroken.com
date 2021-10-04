@@ -37,7 +37,7 @@ export default function NavBar({ disabled, collapsed, onToggle }) {
           />
         </svg>
       </Link>
-      <Burger isClosed={collapsed} handleToggle={() => onToggle()} />
+      <Burger isClosed={collapsed} handleToggle={onToggle} />
       <Navigation isActive={!collapsed} />
     </nav>
   )
