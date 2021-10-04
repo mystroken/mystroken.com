@@ -4,10 +4,10 @@ export const scroll = {
   container: "#___gatsby",
   options: {
     smooth: true,
-    smoothMobile: false,
+    smoothMobile: true,
     resetNativeScroll: false,
     // getDirection: true,
-    // touchMultiplier: 2.5,
-    // lerp: 0.15,
+    touchMultiplier: 2.5,
+    lerp: 0.075,
   },
 }

@@ -1,24 +1,17 @@
 import React, { useCallback } from "react"
 import classNames from "classnames"
 
-export default function Burger({ isClosed, handleToggle }) {
+import { useNavbarCollapseState } from "../hooks/navbar"
 
-  const handleKeyDown = useCallback(e => {
-    if (e.keyCode === 13) {
-      handleToggle(!isClosed)
-    }
-  }, [isClosed, handleToggle])
-
-  const handleOnClick = useCallback(() => {
-    handleToggle(!isClosed)
-  }, [handleToggle, isClosed])
-
+export default function Burger() {
+  const [isNavbarCollapsed, toggleNavbarCollapse] = useNavbarCollapseState()
+  const handleKeyDown = useCallback(e => (e.keyCode === 13) && toggleNavbarCollapse())
   return (
     <div
       className={classNames("burger", {
-        "is-open": !isClosed
+        "is-open": !isNavbarCollapsed
       })}
-      onClick={handleOnClick}
+      onClick={toggleNavbarCollapse}
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex="0"

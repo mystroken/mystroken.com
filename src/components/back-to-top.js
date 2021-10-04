@@ -1,17 +1,20 @@
 import React, { useCallback } from "react"
 import classNames from "classnames"
 
-export default function BackToTop({ disabled, progress, onClick }) {
-  const handleKeyDown = useCallback(e => {
-    if (e.keyCode === 13) {
-      onClick()
-    }
-  }, [onClick])
+const BackToTop = ({ disabled, progress, onClick }) => {
+  const handleKeyDown = useCallback(
+    e => {
+      if (e.keyCode === 13) {
+        onClick()
+      }
+    },
+    [onClick]
+  )
 
   return (
     <div
       className={classNames("back-to-top", {
-        "is-disabled": disabled
+        "is-disabled": disabled,
       })}
       onClick={onClick}
       onKeyDown={handleKeyDown}
@@ -24,10 +27,13 @@ export default function BackToTop({ disabled, progress, onClick }) {
           cy="50"
           r="45"
           strokeWidth="3"
-          strokeDasharray="284"
-          strokeDashoffset="236.48783265642726"
+          strokeDasharray="283"
+          strokeDashoffset="0"
         />
       </svg>
     </div>
   )
 }
+
+BackToTop.whyDidYouRender = true
+export default BackToTop

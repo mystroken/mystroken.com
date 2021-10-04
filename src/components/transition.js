@@ -44,7 +44,6 @@ class Transition extends React.Component {
         this.forceUpdate()
       }, timeout)
     }
-
     return !this.isPageChanging
   }
 
@@ -63,4 +62,4 @@ class Transition extends React.Component {
     return <>{this.props.children}</>
   }
 }
-export default React.memo(Transition)
+export default Transition

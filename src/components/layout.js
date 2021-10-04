@@ -1,18 +1,21 @@
 import React, { useCallback, useEffect, useRef, useState } from "react"
+import round from "@mystroken/g/round"
 
 import Transition from "./transition"
 import Scroll from "./scroll"
 import NavBar from "./navbar"
 import BackToTop from "./back-to-top"
+import { useNavbarCollapseState, useNavbarDisabledState } from "../hooks/navbar"
 
 // This `location` prop will serve as a callback on route change
 const Layout = ({ children, location }) => {
   const scroll = {
     delta: 10,
     amount: useRef(0),
+    progress: useRef(0),
   }
-  const [isNavbarDisabled, setNavbarDisabled] = useState(false)
-  const [isNavbarCollapsed, setNavbarCollapsed] = useState(true)
+  const [isNavbarDisabled, setNavbarDisabled] = useNavbarDisabledState()
+  const [isNavbarCollapsed, setNavbarCollapsed] = useNavbarCollapseState()
   const [isBackToTopDisabled, setBackToTopDisabled] = useState(true)
   const [backToTopProgress, setBackToTopProgress] = useState(0)
   const windowInnerWidth = useRef(0)
@@ -46,10 +49,11 @@ const Layout = ({ children, location }) => {
 
       // Handle components
       handleNavBarOnScroll(target)
-      handleBackToTopOnScroll()
+      handleBackToTopOnScroll(scrollData)
 
       // Store the current position.
       scroll.amount.current = target.y
+      scroll.progress.current = round(target.y / limit.y, 4)
     },
     [scroll.amount, scroll.delta, handleNavBarOnScroll]
   )
@@ -65,7 +69,7 @@ const Layout = ({ children, location }) => {
     target => {
       if (target.y > scroll.amount.current) setNavbarDisabled(true)
       if (target.y < scroll.amount.current) setNavbarDisabled(false)
-      setNavbarCollapsed(true)
+      if (!isNavbarCollapsed) setNavbarCollapsed(true)
     },
     [scroll.amount]
   )
@@ -78,7 +82,13 @@ const Layout = ({ children, location }) => {
    * - Show the scroll progress
    */
   const handleBackToTopOnScroll = () => {
-    if (scroll.amount.current >= 200) setBackToTopDisabled(false)
+    setBackToTopDisabled((scroll.amount.current < 500))
+    // console.log(scroll.progress.current)
+    console.log(windowInnerHeight.current)
+    const svgCircle = document.querySelector(".back-to-top > svg > circle")
+    const maxDashOffset = Number(svgCircle.getAttribute("stroke-dasharray"))
+    const dashOffset = maxDashOffset - (scroll.progress.current * maxDashOffset)
+    svgCircle.setAttribute("stroke-dashoffset", dashOffset)
   }
 
   const handleOnClikOnBackToTop = useCallback(() => {
@@ -143,12 +153,10 @@ const Layout = ({ children, location }) => {
         onClick={handleOnClikOnBackToTop}
       />
 
-      <NavBar
-        disabled={isNavbarDisabled}
-        collapsed={isNavbarCollapsed}
-        onToggle={setNavbarCollapsed}
-      />
+      <NavBar />
+
       <main className="main">{children}</main>
+
       <footer
         data-scroll-section
         id="footer"
