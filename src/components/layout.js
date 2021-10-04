@@ -84,7 +84,6 @@ const Layout = ({ children, location }) => {
   const handleBackToTopOnScroll = () => {
     setBackToTopDisabled((scroll.amount.current < 500))
     // console.log(scroll.progress.current)
-    console.log(windowInnerHeight.current)
     const svgCircle = document.querySelector(".back-to-top > svg > circle")
     const maxDashOffset = Number(svgCircle.getAttribute("stroke-dasharray"))
     const dashOffset = maxDashOffset - (scroll.progress.current * maxDashOffset)

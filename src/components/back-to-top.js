@@ -31,6 +31,11 @@ const BackToTop = ({ disabled, progress, onClick }) => {
           strokeDashoffset="0"
         />
       </svg>
+      <span className="arrow">
+        <span className="line" />
+        <span className="line" />
+        <span className="line" />
+      </span>
     </div>
   )
 }
