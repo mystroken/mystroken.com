@@ -26,4 +26,4 @@ const RandomQuote = () => {
   )
 }
 
-export default React.memo(RandomQuote)
+export default RandomQuote

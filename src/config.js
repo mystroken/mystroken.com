@@ -5,6 +5,7 @@ export const scroll = {
   options: {
     smooth: true,
     smoothMobile: false,
+    resetNativeScroll: false,
     // getDirection: true,
     // touchMultiplier: 2.5,
     // lerp: 0.15,

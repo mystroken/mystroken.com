@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react"
 import Transition from "./transition"
 import Scroll from "./scroll"
 import NavBar from "./navbar"
+import BackToTop from "./back-to-top"
 
 // This `location` prop will serve as a callback on route change
 const Layout = ({ children, location }) => {
@@ -12,6 +13,8 @@ const Layout = ({ children, location }) => {
   }
   const [isNavbarDisabled, setNavbarDisabled] = useState(false)
   const [isNavbarCollapsed, setNavbarCollapsed] = useState(true)
+  const [isBackToTopDisabled, setBackToTopDisabled] = useState(false)
+  const [backToTopProgress, setBackToTopProgress] = useState(0)
 
   /**
    * handleScrollUpdate
@@ -21,18 +24,26 @@ const Layout = ({ children, location }) => {
    * we need to show them back.
    */
   const handleScrollUpdate = useCallback(
-    ({ scroll: { y } }) => {
+    ({ scroll: target, limit }) => {
       // First of all, let's make sure that we
       // have scrolled from a significant amount before doing our verification.
-      if (Math.abs(y - scroll.amount.current) <= scroll.delta) return
+      if (target.y <= scroll.delta) return // When iOs bounce on top
+      if ((target.y - 0) >= (limit.y - window.innerHeight)) return // When iOs bounce on bottom
+      if (Math.abs(target.y - scroll.amount.current) <= scroll.delta) return
+      document.querySelector(".nav-logo").innerHTML = target.y
 
-      if (y > scroll.amount.current) setNavbarDisabled(true)
-      if (y < scroll.amount.current) setNavbarDisabled(false)
+      if (target.y > scroll.amount.current) setNavbarDisabled(true)
+      if (target.y < scroll.amount.current) setNavbarDisabled(false)
+
       setNavbarCollapsed(true)
-      scroll.amount.current = y
+      scroll.amount.current = target.y
     },
     [scroll.amount, scroll.delta]
   )
+
+  const handleOnClikOnBackToTop = () => {
+    // console.log("Back to top has been clicked !")
+  }
 
   useEffect(() => {
     // On page changing, we need to active the navbar back.
@@ -46,8 +57,14 @@ const Layout = ({ children, location }) => {
         Anything that impacts the innerHeight, for example: Font Loaded */}
       <Scroll triggers={location} onUpdate={handleScrollUpdate} />
 
+      <BackToTop
+        disabled={isBackToTopDisabled}
+        progress={backToTopProgress}
+        onClick={() => handleOnClikOnBackToTop()}
+      />
+
       <NavBar
-        disabled={isNavbarDisabled}
+        // disabled={isNavbarDisabled}
         collapsed={isNavbarCollapsed}
         onToggle={() => setNavbarCollapsed(!isNavbarCollapsed)}
       />

@@ -1,0 +1,21 @@
+.back-to-top
+  @extend .position-fixed
+  width: 2.67rem
+  height: 2.67rem
+  bottom: 3rem
+  right: 4.45vw
+  z-index: 2
+  cursor: pointer
+  &::before
+    @extend .position-absolute
+    content: ""
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    border: 6px solid rgba($black, .1)
+    border-radius: 50%
+
+  svg
+    fill: none
+    stroke: currentColor

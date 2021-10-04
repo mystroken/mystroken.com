@@ -30,4 +30,4 @@ const ProjectList = (props) => {
   )
 }
 
-export default React.memo(ProjectList)
+export default ProjectList

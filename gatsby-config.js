@@ -33,15 +33,8 @@ module.exports = {
         // the only required plugin option for WordPress is the GraphQL url.
         url:
           process.env.WPGRAPHQL_URL ||
-          `https://wp.mystroken.com/graphql`,
-          // `https://wpgatsbydemo.wpengine.com/graphql`,
-
-          // This type will contain remote schema Query type
-        // typeName: `WPGraphQL`,
-        // This is field under which it's accessible
-        // fieldName: `wpgraphql`,
-        // Url to query from
-        // url: `https://demo.wpgraphql.com/graphql`,
+          // `https://wp.mystroken.com/graphql`,
+          `https://wpgatsbydemo.wpengine.com/graphql`,
       },
     },
 
@@ -75,7 +68,7 @@ module.exports = {
         short_name: `Mystro Ken`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#000`,
         display: `minimal-ui`,
         // icon: `content/assets/gatsby-icon.png`,
         icon: `content/assets/mystroken-icon-2.svg`,

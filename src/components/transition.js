@@ -3,7 +3,7 @@ import anime from "animejs"
 
 // The duration for each phase of the transition
 // So the total duration will be _twice_ this
-const timeout = 1000
+const timeout = 400
 const transitionEventName = "page-transition::exit"
 
 class Transition extends React.Component {
