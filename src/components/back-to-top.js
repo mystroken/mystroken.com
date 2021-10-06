@@ -32,9 +32,9 @@ const BackToTop = ({ disabled, progress, onClick }) => {
         />
       </svg>
       <span className="arrow">
-        <span className="line" />
-        <span className="line" />
-        <span className="line" />
+        <span />
+        <span />
+        <span />
       </span>
     </div>
   )
