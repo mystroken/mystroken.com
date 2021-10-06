@@ -5,7 +5,6 @@ import Transition from "./transition"
 import Scroll from "./scroll"
 import NavBar from "./navbar"
 import BackToTop from "./back-to-top"
-import { useNavbarCollapseState, useNavbarDisabledState } from "../hooks/navbar"
 
 // This `location` prop will serve as a callback on route change
 const Layout = ({ children, location }) => {
@@ -14,8 +13,8 @@ const Layout = ({ children, location }) => {
     amount: useRef(0),
     progress: useRef(0),
   }
-  const [isNavbarDisabled, setNavbarDisabled] = useNavbarDisabledState()
-  const [isNavbarCollapsed, setNavbarCollapsed] = useNavbarCollapseState()
+  const [isNavbarDisabled, setNavbarDisabled] = useState(false)
+  const [isNavbarCollapsed, setNavbarCollapsed] = useState(true)
   const [isBackToTopDisabled, setBackToTopDisabled] = useState(true)
   const [backToTopProgress, setBackToTopProgress] = useState(0)
   const windowInnerWidth = useRef(0)
@@ -32,6 +31,42 @@ const Layout = ({ children, location }) => {
 
   const addEventListeners = () => {}
   const removeEventListeners = () => {}
+
+  /**
+   * Navbar on scroll
+   *
+   * If we scroll down, we need the hide
+   * elements for showing them back when we scroll up
+   * @param {{ x: number, y: number }} target The targeted scroll amount
+   */
+  const handleNavBarOnScroll = useCallback(
+    target => {
+      if (target.y > scroll.amount.current) setNavbarDisabled(true)
+      if (target.y < scroll.amount.current) setNavbarDisabled(false)
+      if (!isNavbarCollapsed) setNavbarCollapsed(true)
+    },
+    [scroll.amount, isNavbarCollapsed]
+  )
+
+  /**
+   * BackToTop on scroll
+   *
+   * - Hide when we've not
+   *   reach a certain amount of scroll
+   * - Show the scroll progress
+   */
+  const handleBackToTopOnScroll = () => {
+    setBackToTopDisabled(scroll.amount.current < 500)
+    // console.log(scroll.progress.current)
+    const svgCircle = document.querySelector(".back-to-top > svg > circle")
+    const maxDashOffset = Number(svgCircle.getAttribute("stroke-dasharray"))
+    const dashOffset = maxDashOffset - scroll.progress.current * maxDashOffset
+    svgCircle.setAttribute("stroke-dashoffset", dashOffset)
+  }
+
+  const handleOnClikOnBackToTop = useCallback(() => {
+    console.log("Back to top has been clicked !")
+  }, [scroll.amount, isBackToTopDisabled])
 
   /**
    * onScroll
@@ -57,42 +92,6 @@ const Layout = ({ children, location }) => {
     },
     [scroll.amount, scroll.delta, handleNavBarOnScroll]
   )
-
-  /**
-   * Navbar on scroll
-   *
-   * If we scroll down, we need the hide
-   * elements for showing them back when we scroll up
-   * @param {{ x: number, y: number }} target The targeted scroll amount
-   */
-  const handleNavBarOnScroll = useCallback(
-    target => {
-      if (target.y > scroll.amount.current) setNavbarDisabled(true)
-      if (target.y < scroll.amount.current) setNavbarDisabled(false)
-      if (!isNavbarCollapsed) setNavbarCollapsed(true)
-    },
-    [scroll.amount]
-  )
-
-  /**
-   * BackToTop on scroll
-   *
-   * - Hide when we've not
-   *   reach a certain amount of scroll
-   * - Show the scroll progress
-   */
-  const handleBackToTopOnScroll = () => {
-    setBackToTopDisabled((scroll.amount.current < 500))
-    // console.log(scroll.progress.current)
-    const svgCircle = document.querySelector(".back-to-top > svg > circle")
-    const maxDashOffset = Number(svgCircle.getAttribute("stroke-dasharray"))
-    const dashOffset = maxDashOffset - (scroll.progress.current * maxDashOffset)
-    svgCircle.setAttribute("stroke-dashoffset", dashOffset)
-  }
-
-  const handleOnClikOnBackToTop = useCallback(() => {
-    // console.log("Back to top has been clicked !")
-  }, [isBackToTopDisabled])
 
   /**
    * When
@@ -152,7 +151,11 @@ const Layout = ({ children, location }) => {
         onClick={handleOnClikOnBackToTop}
       />
 
-      <NavBar />
+      <NavBar
+        disabled={isNavbarDisabled}
+        collapsed={isNavbarCollapsed}
+        onClickBurger={setNavbarCollapsed}
+      />
 
       <main className="main">{children}</main>
 

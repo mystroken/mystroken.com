@@ -10,13 +10,10 @@
 import React from "react"
 import classNames from "classnames"
 
-import { useNavbarCollapseState, useNavbarDisabledState } from "../hooks/navbar"
 import Burger from "./burger"
 import Link from "./link"
 
-export default function NavBar() {
-  const [collapsed] = useNavbarCollapseState()
-  const [disabled] = useNavbarDisabledState()
+export default function NavBar({ collapsed, disabled, onClickBurger }) {
   return (
     <nav
       className={classNames("nav", {
@@ -40,7 +37,7 @@ export default function NavBar() {
         </svg>
       </Link>
 
-      <Burger />
+      <Burger closed={collapsed} onClick={onClickBurger} />
 
       {/* Navigation */}
       <div className={classNames("menu", { "is-active": !collapsed })}>
