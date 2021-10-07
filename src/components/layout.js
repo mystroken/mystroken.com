@@ -69,9 +69,10 @@ const Layout = ({ children, location }) => {
   }, [scroll.amount, scroll.progress])
 
   const handleOnClikOnBackToTop = useCallback(() => {
-    // console.log("Back to top has been clicked !")
-    window.scroll && window.scroll.scrollTo(0)
-  })
+    if (scroll.amount.current > 0) {
+      window.scroll && window.scroll.scrollTo(0, { duration: 800, easing: [0.55, 0, 1.00, 0.35] })
+    }
+  }, [scroll.amount])
 
   /**
    * onScroll
