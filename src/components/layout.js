@@ -49,6 +49,7 @@ const Layout = ({ children, location }) => {
 
   /**
    * When we click on the burger menu
+   * TODO: when onClick scroll on top
    */
   const handleNavbarOnClickBurger = useCallback(() => {
     setNavbarCollapsed(!isNavbarCollapsed)

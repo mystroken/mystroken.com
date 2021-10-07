@@ -53,7 +53,9 @@ $burger-stroke-width: 2px
     height: $burger-stroke-width
     margin: $burger-stroke-width 0
     background: $black
-    transition: all $transition-duration ease-in-out
+    transition-property: opacity, transform
+    transition-timing-function: ease-in-out
+    transition-duration: $transition-duration
     &:nth-child(3)
       transform: translate3d(-25%,0,0) scale3d(.5,1,1)
   &:hover
@@ -61,6 +63,7 @@ $burger-stroke-width: 2px
       transform: scale3d(1,1,1)
   &.is-open
     .line
+      transition-property: transform
       &:first-child
         transform: translate3d(0,200%,0) rotate(45deg)
       &:nth-child(2)
