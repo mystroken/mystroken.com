@@ -6,7 +6,7 @@ export default class BackToTop extends React.Component {
     super(props)
     this.handleKeyDown = this.handleKeyDown.bind(this)
     this.circleRadius = 45
-    this.circleDashArray = 2 * Math.PI * this.circleRadius
+    this.circleDashArray = Math.ceil(2 * Math.PI * this.circleRadius)
   }
 
   /**
@@ -25,8 +25,7 @@ export default class BackToTop extends React.Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    if (this.props.disabled !== nextProps.disabled) return true
-    return false
+    return this.props.disabled !== nextProps.disabled
   }
 
   render() {
