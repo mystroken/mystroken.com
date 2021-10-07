@@ -16,7 +16,7 @@ exports.onPreRouteUpdate = ({ location, prevLocation }) => {
 }
 
 exports.onRouteUpdate = () => {
-  console.log("Page change !")
+  // console.log("Page change !")
 }
 
 // exports.shouldUpdateScroll = ({

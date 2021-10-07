@@ -7,13 +7,14 @@
  * @author Mystro Ken <mystroken@gmail.com>
  */
 
-import React from "react"
+import React, { useCallback } from "react"
 import classNames from "classnames"
 
 import Burger from "./burger"
 import Link from "./link"
 
-export default function NavBar({ collapsed, disabled, onClickBurger }) {
+export default function NavBar({ collapsed, disabled, onBurgerClick }) {
+  const handleClickOnBurger = useCallback(() => onBurgerClick(), [onBurgerClick])
   return (
     <nav
       className={classNames("nav", {
@@ -37,7 +38,7 @@ export default function NavBar({ collapsed, disabled, onClickBurger }) {
         </svg>
       </Link>
 
-      <Burger closed={collapsed} onClick={onClickBurger} />
+      <Burger closed={collapsed} onClick={handleClickOnBurger} />
 
       {/* Navigation */}
       <div className={classNames("menu", { "is-active": !collapsed })}>

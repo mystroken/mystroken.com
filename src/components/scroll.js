@@ -16,11 +16,7 @@ const Scroll = ({triggers, onUpdate}) => {
 
     // Exposing to the global scope for ease of use.
     window.scroll = locomotiveScroll
-
-    locomotiveScroll.on("scroll", args => {
-      // console.log(args)
-      onUpdate(args)
-    })
+    locomotiveScroll.on("scroll", args => onUpdate(args))
 
     return () => {
       if (locomotiveScroll) locomotiveScroll.destroy()

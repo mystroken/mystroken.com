@@ -16,7 +16,6 @@ const Layout = ({ children, location }) => {
   const [isNavbarDisabled, setNavbarDisabled] = useState(false)
   const [isNavbarCollapsed, setNavbarCollapsed] = useState(true)
   const [isBackToTopDisabled, setBackToTopDisabled] = useState(true)
-  const [backToTopProgress, setBackToTopProgress] = useState(0)
   const windowInnerWidth = useRef(0)
   const windowInnerHeight = useRef(0)
 
@@ -48,6 +47,10 @@ const Layout = ({ children, location }) => {
     [scroll.amount, isNavbarCollapsed]
   )
 
+  const handleNavbarOnClickBurger = useCallback(() => {
+    setNavbarCollapsed(!isNavbarCollapsed)
+  }, [isNavbarCollapsed, setNavbarCollapsed])
+
   /**
    * BackToTop on scroll
    *
@@ -55,18 +58,20 @@ const Layout = ({ children, location }) => {
    *   reach a certain amount of scroll
    * - Show the scroll progress
    */
-  const handleBackToTopOnScroll = () => {
-    setBackToTopDisabled(scroll.amount.current < 500)
-    // console.log(scroll.progress.current)
+  const handleBackToTopOnScroll = useCallback(() => {
+    setBackToTopDisabled(scroll.amount.current < 300)
+
+    // Animate the progress
     const svgCircle = document.querySelector(".back-to-top > svg > circle")
     const maxDashOffset = Number(svgCircle.getAttribute("stroke-dasharray"))
     const dashOffset = maxDashOffset - scroll.progress.current * maxDashOffset
     svgCircle.setAttribute("stroke-dashoffset", dashOffset)
-  }
+  }, [scroll.amount, scroll.progress])
 
   const handleOnClikOnBackToTop = useCallback(() => {
-    console.log("Back to top has been clicked !")
-  }, [scroll.amount, isBackToTopDisabled])
+    // console.log("Back to top has been clicked !")
+    window.scroll && window.scroll.scrollTo(0)
+  })
 
   /**
    * onScroll
@@ -76,6 +81,8 @@ const Layout = ({ children, location }) => {
   const onScroll = useCallback(
     scrollData => {
       const { scroll: target, limit } = scrollData
+      scroll.progress.current = round(target.y / limit.y, 4)
+
       // First of all, let's make sure that we
       // have scrolled from a significant amount before doing anything.
       if (target.y <= scroll.delta) return // When iOs bounce on top
@@ -88,9 +95,14 @@ const Layout = ({ children, location }) => {
 
       // Store the current position.
       scroll.amount.current = target.y
-      scroll.progress.current = round(target.y / limit.y, 4)
     },
-    [scroll.amount, scroll.delta, handleNavBarOnScroll]
+    [
+      scroll.amount,
+      scroll.delta,
+      scroll.progress,
+      handleNavBarOnScroll,
+      handleBackToTopOnScroll,
+    ]
   )
 
   /**
@@ -147,14 +159,14 @@ const Layout = ({ children, location }) => {
 
       <BackToTop
         disabled={isBackToTopDisabled}
-        progress={backToTopProgress}
+        progress={scroll.progress.current}
         onClick={handleOnClikOnBackToTop}
       />
 
       <NavBar
         disabled={isNavbarDisabled}
         collapsed={isNavbarCollapsed}
-        onClickBurger={setNavbarCollapsed}
+        onBurgerClick={handleNavbarOnClickBurger}
       />
 
       <main className="main">{children}</main>
