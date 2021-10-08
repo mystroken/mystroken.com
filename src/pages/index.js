@@ -1,5 +1,4 @@
 import React from "react"
-import Helmet from "react-helmet"
 import { graphql, Link } from "gatsby"
 
 import Seo from "../components/seo"
@@ -8,13 +7,13 @@ import PostList from "../components/post-list"
 import ProjectList from "../components/project-list"
 
 export default function HomePage({ data }) {
-  const site = data.wp.generalSettings
+  // const site = data.wp.generalSettings
   const posts = data.allWpPost.edges.map(({ post }) => post)
 
   return (
     <>
-      <Helmet title={site.title} />
-      <Seo title={site.title} />
+      {/* <Seo title={site.title} ignoreTitleTemplate={true} /> */}
+      <Seo title="Mystro Ken — Software engineer and designer" ignoreTitleTemplate={true} />
       <Section
         data-scroll-section
         className="intro-section"
