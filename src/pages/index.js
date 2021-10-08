@@ -4,7 +4,6 @@ import { graphql, Link } from "gatsby"
 
 import Seo from "../components/seo"
 import Section from "../components/section"
-import RandomQuote from "../components/random-quote"
 import PostList from "../components/post-list"
 import ProjectList from "../components/project-list"
 
@@ -36,14 +35,6 @@ export default function HomePage({ data }) {
             complex problems.
           </p>
         </div>
-      </Section>
-
-      <Section
-        data-scroll-section
-        fluid={true}
-        className="quote-section"
-      >
-        <RandomQuote />
       </Section>
 
       <Section
