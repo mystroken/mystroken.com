@@ -13,18 +13,27 @@ export default function HomePage({ data }) {
   return (
     <>
       {/* <Seo title={site.title} ignoreTitleTemplate={true} /> */}
-      <Seo title="Mystro Ken — Software engineer and designer" ignoreTitleTemplate={true} />
+      <Seo
+        title="Mystro Ken — Software engineer and designer"
+        ignoreTitleTemplate={true}
+      />
       <Section
         data-scroll-section
         className="intro-section"
         underline={false}
-        fluid={true}
+        // fluid={true}
         style={{ paddingTop: 0 }}
       >
-        <div className="title__name" style={{ fontSize: '8rem', marginLeft: '10vw', }}>
-          Hello!<br />I'm Mystro Ken
+        <div
+          className="title__name"
+        >
+          Hello!
+          <br />
+          I'm Mystro Ken
         </div>
-        <div className="description" style={{ marginLeft: '30vw', marginTop: '7vw', width: '40vw' }}>
+        <div
+          className="description"
+        >
           <p>
             A Software developer &amp; UI/UX designer focused on designing and
             developing software for people.
