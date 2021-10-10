@@ -8,6 +8,6 @@ export const scroll = {
     resetNativeScroll: false,
     getDirection: false,
     // touchMultiplier: 2.5,
-    lerp: 0.075,
+    lerp: 0.15,
   },
 }
